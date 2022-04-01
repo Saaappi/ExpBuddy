@@ -90,6 +90,13 @@
 				</Scripts>
 				<FontString inherits="ChatFontNormal" />
 			</EditBox>
+			<Button name="ExpBuddySearchButton" inherits="UIPanelButtonTemplate" text="|cffFFFFFFSearch|r">
+				<Size x="60" y="20"/>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="ExpBuddyLevelEditBox" relativePoint="BOTTOM" y="-10" />
+				</Anchors>
+				<NormalFont style="GameFontNormal"/>
+			</Button>
 			<!--
 			<CheckButton name="HMPDisableAllCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>

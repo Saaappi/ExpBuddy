@@ -204,25 +204,34 @@ function ExpBuddyLoadMenu()
 			ExpBuddyMenu:SetScript("OnDragStart", ExpBuddyMenu.StartMoving)
 			ExpBuddyMenu:SetScript("OnDragStop", ExpBuddyMenu.StopMovingOrSizing)
 			
-			ExpBuddyZoneNameEditBox:SetScript("OnEnterPressed", function(self)
-				self:SetText("")
-				self:ClearFocus()
-				ExpBuddyLevelEditBox:SetText("")
-			end)
-			
-			ExpBuddyLevelEditBox:SetScript("OnEnterPressed", function(self)
-				-- Make sure the input is a number.
-				if tonumber(self:GetText()) then
-					-- Make sure the zone name field has text.
-					if ExpBuddyZoneNameEditBox:GetText() ~= "" then
-						self:SetText("")
-						self:ClearFocus()
+			ExpBuddySearchButton:SetScript("OnClick", function(self)
+				-- SANITY CHECK
+				--
+				-- Ensure the zone name field has a value.
+				if ExpBuddyZoneNameEditBox:GetText() ~= "" then
+					-- The level field is optional. If there is text
+					-- then let's ensure it's a number.
+					if ExpBuddyLevelEditBox:GetText() ~= "" then
+						if tonumber(ExpBuddyLevelEditBox:GetText()) then
+							-- DO STUFF
+							-- A level was included, so check zone data for
+							-- only the provided level.
+						else
+							ExpBuddyLevelEditBox:SetText("")
+							print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": The level field must contain a number.")
+							return
+						end
 					else
-						print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": You must also enter a zone name.")
+						-- DO STUFF
+						-- The level field is optional!
+						ExpBuddyZoneNameEditBox:SetText("")
+						ExpBuddyLevelEditBox:SetText("")
+						ExpBuddyZoneNameEditBox:ClearFocus()
+						ExpBuddyLevelEditBox:ClearFocus()
 					end
 				else
-					self:SetText("")
-					print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": Your input must be a number.")
+					print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": You must include a zone name.")
+					return
 				end
 			end)
 		end
