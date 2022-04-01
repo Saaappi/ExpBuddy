@@ -210,8 +210,13 @@ function ExpBuddyLoadMenu()
 			end)
 			
 			ExpBuddyLevelEditBox:SetScript("OnEnterPressed", function(self)
-				self:SetText("")
-				self:ClearFocus()
+				-- Make sure the input is a number.
+				if tonumber(self:GetText()) then
+					self:SetText("")
+					self:ClearFocus()
+				else
+					print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": Your input must be a number.")
+				end
 			end)
 		end
 	end
