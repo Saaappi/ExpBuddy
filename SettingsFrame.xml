@@ -56,7 +56,7 @@
 				</Scripts>
 				<FontString inherits="ChatFontNormal" />
 			</EditBox>
-			<EditBox name="ExpBuddyLevelEditBox" letters="50">
+			<EditBox name="ExpBuddyLevelEditBox" letters="2">
 				<Size x="130" y="32" />
 				<Anchors>
 					<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="0" y="60" />

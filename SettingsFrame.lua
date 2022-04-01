@@ -197,12 +197,22 @@ function ExpBuddyLoadMenu()
 		if UnitAffectingCombat("player") == false then
 			ExpBuddyMenu:Show()
 			
-			-- Make the options menu movable.
+			-- Make the menu movable.
 			ExpBuddyMenu:SetMovable(true)
 			ExpBuddyMenu:EnableMouse(true)
 			ExpBuddyMenu:RegisterForDrag("LeftButton")
 			ExpBuddyMenu:SetScript("OnDragStart", ExpBuddyMenu.StartMoving)
 			ExpBuddyMenu:SetScript("OnDragStop", ExpBuddyMenu.StopMovingOrSizing)
+			
+			ExpBuddyZoneNameEditBox:SetScript("OnEnterPressed", function(self)
+				self:SetText("")
+				self:ClearFocus()
+			end)
+			
+			ExpBuddyLevelEditBox:SetScript("OnEnterPressed", function(self)
+				self:SetText("")
+				self:ClearFocus()
+			end)
 		end
 	end
 end
