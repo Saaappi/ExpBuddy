@@ -22,6 +22,74 @@
 					<Anchor point="TOPRIGHT" relativeTo="ExpBuddyMenu" x="-2" y="-3" />
 				</Anchors>
 			</Button>
+			<EditBox name="ExpBuddyZoneNameEditBox" letters="50">
+				<Size x="130" y="32" />
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="0" y="140" />
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size x="75" y="32" />
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="-10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size x="75" y="32" />
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						ExpBuddyZoneNameEditBox:SetAutoFocus(false)
+					</OnLoad>
+				</Scripts>
+				<FontString inherits="ChatFontNormal" />
+			</EditBox>
+			<EditBox name="ExpBuddyLevelEditBox" letters="50">
+				<Size x="130" y="32" />
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="0" y="60" />
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size x="75" y="32" />
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset x="-10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"/>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size x="75" y="32" />
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset x="10" y="0" />
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"/>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						ExpBuddyLevelEditBox:SetAutoFocus(false)
+					</OnLoad>
+				</Scripts>
+				<FontString inherits="ChatFontNormal" />
+			</EditBox>
 			<!--
 			<CheckButton name="HMPDisableAllCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>
@@ -173,23 +241,23 @@
 					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
+				<FontString name="ExpBuddyZoneNameEditBoxText" inherits="GameFontNormal" font="Fonts\2002B.ttf" text="Zone Name">
+					<Size x="85" y="20" />
+					<Anchors>
+						<Anchor point="TOP" relativeTo="ExpBuddyZoneNameEditBox" relativePoint="TOP" y="15" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyLevelEditBoxText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Level">
+					<Size x="85" y="20" />
+					<Anchors>
+						<Anchor point="TOP" relativeTo="ExpBuddyLevelEditBox" relativePoint="TOP" y="15" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
 				<!--
-				<FontString name="HMPDisableAllText" inherits="GameFontNormal" font="Fonts\2002B.ttf" text="Disable All" justifyH="CENTER" justifyV="CENTER">
-					<Size x="80" y="20" />
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="HMPDisableAllCB" relativePoint="LEFT" x="22" />
-					</Anchors>
-					<FontHeight val="12" />
-					<Color r="1" g="1" b="1" />
-				</FontString>
-				<FontString name="HMPDialogText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Dialog" justifyH="CENTER" justifyV="CENTER">
-					<Size x="80" y="20" />
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="HMPDialogCB" relativePoint="LEFT" x="12" />
-					</Anchors>
-					<FontHeight val="12" />
-					<Color r="1" g="1" b="1" />
-				</FontString>
 				<FontString name="HMPEmotesText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Emotes" justifyH="CENTER" justifyV="CENTER">
 					<Size x="80" y="20" />
 					<Anchors>
