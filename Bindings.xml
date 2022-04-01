@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="EXPBUDDY_OPEN_MENU" header="ExpBuddy" category="ADDONS">
+		ExpBuddyKeyPressHandler(GetBindingKey("EXPBUDDY_OPEN_MENU"))
+	</Binding>
+</Bindings>
