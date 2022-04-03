@@ -5,150 +5,6 @@ local L_NOTES = addonTable.L_NOTES
 local L_GLOBALSTRINGS = addonTable.L_GLOBALSTRINGS
 local icon = ""
 
-function HMPTab_OnClick(self)
-	local tabId = self
-	PanelTemplates_SetTab(ExpBuddyMenu, tabId)
-	if tabId == 1 then
-		-- Show the widgets hidden from the Systems
-		-- tab.
-		HMPDialogCB:Show()
-		HMPDialogText:Show()
-		HMPEmotesCB:Show()
-		HMPEmotesText:Show()
-		HMPGarrTblCB:Show()
-		HMPGarrisonTblText:Show()
-		HMPMerchantsCB:Show()
-		HMPMerchantsText:Show()
-		HMPTrainersV2CB:Show()
-		HMPTrainersV2Text:Show()
-		HMPSpeechCB:Show()
-		HMPSpeechText:Show()
-		HMPQuestsCB:Show()
-		HMPQuestsText:Show()
-		HMPToFCB:Show()
-		HMPToFText:Show()
-		HMPCinematicsCB:Show()
-		HMPCinematicsText:Show()
-		HMPQueuesCB:Show()
-		HMPQueuesText:Show()
-		HMPChromieTimeDropDown:Show()
-		HMPCovenantsDropDown:Show()
-		HMPBFAZoneSelDropDown:Show()
-		HMPSLZoneSelDropDown:Show()
-		
-		-- Hide the widgets from the Systems tab.
-		HMPWarModeCB:Hide()
-		HMPWarModeText:Hide()
-		HMPNotesCB:Hide()
-		HMPNotesText:Hide()
-		HMPTalentsCB:Hide()
-		HMPTalentsText:Hide()
-		HMPPartyPlayCB:Hide()
-		HMPPartyPlayText:Hide()
-		HMPPartyPlayAnnounceCB:Hide()
-		HMPPartyPlayAutoShareCB:Hide()
-		HMPMinimapIconCB:Hide()
-		HMPMinimapIconText:Hide()
-		HMPLoggingCB:Hide()
-		HMPLoggingText:Hide()
-		HMPTorghastPowersDropDown:Hide()
-	elseif tabId == 2 then
-		-- Show the widgets hidden from the Automations
-		-- tab.
-		HMPWarModeCB:Show()
-		HMPWarModeText:Show()
-		HMPNotesCB:Show()
-		HMPNotesText:Show()
-		HMPTalentsCB:Show()
-		HMPTalentsText:Show()
-		HMPPartyPlayCB:Show()
-		HMPPartyPlayText:Show()
-		-- These two buttons should only be shown if
-		-- Party Play is enabled.
-		if HelpMePlayOptionsDB.PartyPlay then
-			HMPPartyPlayAnnounceCB:Show()
-			HMPPartyPlayAutoShareCB:Show()
-		else
-			HMPPartyPlayAnnounceCB:Hide()
-			HMPPartyPlayAutoShareCB:Hide()
-		end
-		HMPTorghastPowersDropDown:Show()
-		
-		-- Hide the widgets from the Automations tab.
-		HMPDialogCB:Hide()
-		HMPDialogText:Hide()
-		HMPEmotesCB:Hide()
-		HMPEmotesText:Hide()
-		HMPGarrTblCB:Hide()
-		HMPGarrisonTblText:Hide()
-		HMPMerchantsCB:Hide()
-		HMPMerchantsText:Hide()
-		HMPTrainersV2CB:Hide()
-		HMPTrainersV2Text:Hide()
-		HMPSpeechCB:Hide()
-		HMPSpeechText:Hide()
-		HMPQuestsCB:Hide()
-		HMPQuestsText:Hide()
-		HMPToFCB:Hide()
-		HMPToFText:Hide()
-		HMPCinematicsCB:Hide()
-		HMPCinematicsText:Hide()
-		HMPQueuesCB:Hide()
-		HMPQueuesText:Hide()
-		HMPMinimapIconCB:Hide()
-		HMPMinimapIconText:Hide()
-		HMPLoggingCB:Hide()
-		HMPLoggingText:Hide()
-		HMPChromieTimeDropDown:Hide()
-		HMPCovenantsDropDown:Hide()
-		HMPBFAZoneSelDropDown:Hide()
-		HMPSLZoneSelDropDown:Hide()
-	else
-		-- Show the widgets hidden from the other tabs.
-		HMPMinimapIconCB:Show()
-		HMPMinimapIconText:Show()
-		HMPLoggingCB:Show()
-		HMPLoggingText:Show()
-		
-		-- Hide the widgets from the other tabs.
-		HMPDialogCB:Hide()
-		HMPDialogText:Hide()
-		HMPEmotesCB:Hide()
-		HMPEmotesText:Hide()
-		HMPGarrTblCB:Hide()
-		HMPGarrisonTblText:Hide()
-		HMPMerchantsCB:Hide()
-		HMPMerchantsText:Hide()
-		HMPTrainersV2CB:Hide()
-		HMPTrainersV2Text:Hide()
-		HMPSpeechCB:Hide()
-		HMPSpeechText:Hide()
-		HMPQuestsCB:Hide()
-		HMPQuestsText:Hide()
-		HMPToFCB:Hide()
-		HMPToFText:Hide()
-		HMPCinematicsCB:Hide()
-		HMPCinematicsText:Hide()
-		HMPQueuesCB:Hide()
-		HMPQueuesText:Hide()
-		HMPWarModeCB:Hide()
-		HMPWarModeText:Hide()
-		HMPNotesCB:Hide()
-		HMPNotesText:Hide()
-		HMPTalentsCB:Hide()
-		HMPTalentsText:Hide()
-		HMPPartyPlayCB:Hide()
-		HMPPartyPlayText:Hide()
-		HMPPartyPlayAnnounceCB:Hide()
-		HMPPartyPlayAutoShareCB:Hide()
-		HMPChromieTimeDropDown:Hide()
-		HMPCovenantsDropDown:Hide()
-		HMPTorghastPowersDropDown:Hide()
-		HMPBFAZoneSelDropDown:Hide()
-		HMPSLZoneSelDropDown:Hide()
-	end
-end
-
 local function ShowTooltip(self, text)
 	GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
 	GameTooltip:SetText(text)
@@ -205,33 +61,31 @@ function ExpBuddyLoadMenu()
 			ExpBuddyMenu:SetScript("OnDragStop", ExpBuddyMenu.StopMovingOrSizing)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
-				-- SANITY CHECK
-				--
 				-- Ensure the zone name field has a value.
 				if ExpBuddyZoneNameEditBox:GetText() ~= "" then
-					-- The level field is optional. If there is text
-					-- then let's ensure it's a number.
-					if ExpBuddyLevelEditBox:GetText() ~= "" then
-						if tonumber(ExpBuddyLevelEditBox:GetText()) then
-							-- DO STUFF
-							-- A level was included, so check zone data for
-							-- only the provided level.
-						else
-							ExpBuddyLevelEditBox:SetText("")
-							print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": The level field must contain a number.")
-							return
+					local zoneName = ExpBuddyZoneNameEditBox:GetText()
+					for k,v in pairs(ExpBuddyDB) do
+						if string.find(string.lower(k), string.lower(zoneName)) then
+							print("|cffFED55F" .. k .. "|r")
+							print("Quests: " .. ExpBuddyDB[k]["Quests"])
+							print("Kills: " .. ExpBuddyDB[k]["Kills"])
+							print("Nodes: " .. ExpBuddyDB[k]["Nodes"])
+							print("Exploration: " .. ExpBuddyDB[k]["Exploration"])
 						end
-					else
-						-- DO STUFF
-						-- The level field is optional!
-						ExpBuddyZoneNameEditBox:SetText("")
-						ExpBuddyLevelEditBox:SetText("")
-						ExpBuddyZoneNameEditBox:ClearFocus()
-						ExpBuddyLevelEditBox:ClearFocus()
 					end
+					ExpBuddyZoneNameEditBox:SetText("")
+					ExpBuddyZoneNameEditBox:ClearFocus()
 				else
-					print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": You must include a zone name.")
-					return
+					local zoneName = C_Map.GetMapInfo(C_Map.GetBestMapForUnit("player")).name
+					for k,v in pairs(ExpBuddyDB) do
+						if string.find(string.lower(k), string.lower(zoneName)) then
+							print("|cffFED55F" .. k .. "|r")
+							print("Quests: " .. ExpBuddyDB[k]["Quests"])
+							print("Kills: " .. ExpBuddyDB[k]["Kills"])
+							print("Nodes: " .. ExpBuddyDB[k]["Nodes"])
+							print("Exploration: " .. ExpBuddyDB[k]["Exploration"])
+						end
+					end
 				end
 			end)
 		end

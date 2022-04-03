@@ -22,6 +22,7 @@ SettingsFrame.lua
 
 # Systems
 Systems\Commands.lua
+Systems\Experience.lua
 
 # General Stuff
 Keybinding.lua
