@@ -105,7 +105,7 @@ function ExpBuddyLoadMenu()
 			end)
 			
 			ExpBuddyZoneNameEditBox:SetScript("OnEnter", function(self)
-				ShowTooltip(self, "|cffFFFFFFZone Name|r\nEnter a full zone name, a partial name, or leave the\nfield blank to search the current zone.")
+				ShowTooltip(self, "|cffFFFFFFZone Name|r\nEnter a full zone name, a partial name, or leave the\nfield blank to search the current zone.\n\nWhen using partial names, only the first match\nwill be returned.")
 			end)
 			ExpBuddyZoneNameEditBox:SetScript("OnLeave", function(self)
 				HideTooltip(self)
