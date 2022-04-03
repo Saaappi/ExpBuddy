@@ -17,6 +17,17 @@ local function HideTooltip(self)
 	end
 end
 
+local function FormatNumber(number)
+	local formattedNumber = number
+	while true do
+		formattedNumber, k = string.gsub(formattedNumber, "^(-?%d+)(%d%d%d)", '%1,%2')
+		if k == 0 then
+			break
+		end
+	end
+	return formattedNumber
+end
+
 function ExpBuddyShowMinimapIcon(show)
 	if show then
 		if icon ~= "" then
@@ -118,10 +129,10 @@ function ExpBuddyLoadMenu()
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
 							print("|cffFED55F" .. k .. "|r")
-							print("Quests: " .. ExpBuddyDB[k]["Quests"])
-							print("Kills: " .. ExpBuddyDB[k]["Kills"])
-							print("Nodes: " .. ExpBuddyDB[k]["Nodes"])
-							print("Exploration: " .. ExpBuddyDB[k]["Exploration"])
+							print("Quests: " .. FormatNumber(ExpBuddyDB[k]["Quests"]))
+							print("Kills: " .. FormatNumber(ExpBuddyDB[k]["Kills"]))
+							print("Nodes: " .. FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							print("Exploration: " .. FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
 					ExpBuddyZoneNameEditBox:SetText("")
@@ -131,10 +142,10 @@ function ExpBuddyLoadMenu()
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
 							print("|cffFED55F" .. k .. "|r")
-							print("Quests: " .. ExpBuddyDB[k]["Quests"])
-							print("Kills: " .. ExpBuddyDB[k]["Kills"])
-							print("Nodes: " .. ExpBuddyDB[k]["Nodes"])
-							print("Exploration: " .. ExpBuddyDB[k]["Exploration"])
+							print("Quests: " .. FormatNumber(ExpBuddyDB[k]["Quests"]))
+							print("Kills: " .. FormatNumber(ExpBuddyDB[k]["Kills"]))
+							print("Nodes: " .. FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							print("Exploration: " .. FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
 				end
