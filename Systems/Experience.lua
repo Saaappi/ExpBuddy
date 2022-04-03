@@ -8,6 +8,7 @@ e:RegisterEvent("CHAT_MSG_SYSTEM")
 e:RegisterEvent("QUEST_TURNED_IN")
 e:SetScript("OnEvent", function(self, event, ...)
 	if event == "CHAT_MSG_COMBAT_XP_GAIN" then
+		if ExpBuddyOptionsDB.Trace == false then return end
 		local msg = ...
 		if string.find(msg, "dies") then
 			-- The player defeated an NPC for some
@@ -31,6 +32,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if event == "CHAT_MSG_SYSTEM" then
+		if ExpBuddyOptionsDB.Trace == false then return end
 		local msg = ...
 		if string.find(msg, "Discovered") then
 			-- The player explored an area for some
@@ -41,6 +43,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 		end
 	end
 	if event == "QUEST_TURNED_IN" then
+		if ExpBuddyOptionsDB.Trace == false then return end
 		-- The player turned in a quest for some
 		-- experience.
 		isQuest = true

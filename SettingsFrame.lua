@@ -61,11 +61,31 @@ function ExpBuddyLoadMenu()
 			ExpBuddyMenu:SetScript("OnDragStop", ExpBuddyMenu.StopMovingOrSizing)
 			
 			-- Check settings!
+			if ExpBuddyOptionsDB.Trace then
+				ExpBuddyTraceCB:SetChecked(true)
+			else
+				ExpBuddyTraceCB:SetChecked(false)
+			end
 			if ExpBuddyOptionsDB.MapIcon then
 				ExpBuddyMapIconCB:SetChecked(true)
 			else
 				ExpBuddyMapIconCB:SetChecked(false)
 			end
+			
+			-- Trace Check Button
+			ExpBuddyTraceCB:SetScript("OnEnter", function(self)
+				ShowTooltip(self, "ExpBuddy will only log experience activity when\ntracing is enabled!")
+			end)
+			ExpBuddyTraceCB:SetScript("OnLeave", function(self)
+				HideTooltip(self)
+			end)
+			ExpBuddyTraceCB:SetScript("OnClick", function(self)
+				if self:GetChecked() then
+					ExpBuddyOptionsDB.Trace = true
+				else
+					ExpBuddyOptionsDB.Trace = false
+				end
+			end)
 			
 			-- Map Icon Check Button
 			ExpBuddyMapIconCB:SetScript("OnEnter", function(self)
@@ -82,6 +102,13 @@ function ExpBuddyLoadMenu()
 					ExpBuddyOptionsDB.MapIcon = false
 					ExpBuddyShowMinimapIcon(false)
 				end
+			end)
+			
+			ExpBuddyZoneNameEditBox:SetScript("OnEnter", function(self)
+				ShowTooltip(self, "|cffFFFFFFZone Name|r\nEnter a full zone name, a partial name, or leave the\nfield blank to search the current zone.")
+			end)
+			ExpBuddyZoneNameEditBox:SetScript("OnLeave", function(self)
+				HideTooltip(self)
 			end)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)

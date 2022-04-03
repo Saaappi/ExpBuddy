@@ -68,6 +68,11 @@
 					<Anchor point="BOTTOMLEFT" relativeTo="ExpBuddyMenu" relativePoint="BOTTOMLEFT" x="15" y="15" />
 				</Anchors>
 			</CheckButton>
+			<CheckButton name="ExpBuddyTraceCB" inherits="UICheckButtonTemplate" text="CheckButton1">
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="ExpBuddyMapIconCB" relativePoint="TOP" y="5" />
+				</Anchors>
+			</CheckButton>
 			<!--
 			<CheckButton name="HMPDialogCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>
@@ -226,7 +231,15 @@
 				<FontString name="ExpBuddyMinimapIconText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Map Icon" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
-						<Anchor point="LEFT" relativeTo="ExpBuddyMapIconCB" relativePoint="RIGHT" x="-15" />
+						<Anchor point="LEFT" relativeTo="ExpBuddyMapIconCB" relativePoint="RIGHT" x="-20" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTraceText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Trace" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="ExpBuddyTraceCB" relativePoint="RIGHT" x="-30" />
 					</Anchors>
 					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
