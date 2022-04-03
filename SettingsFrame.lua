@@ -27,10 +27,10 @@ function ExpBuddyShowMinimapIcon(show)
 			-- information for the minimap icon.
 			local iconLDB = LibStub:GetLibrary("LibDataBroker-1.1"):NewDataObject(addonName, {
 				type = "launcher",
-				icon = "Interface\\Icons\\achievement_reputation_08",
+				icon = "Interface\\Icons\\xp_icon",
 				OnTooltipShow = function(tooltip)
 					tooltip:SetText(L_GLOBALSTRINGS["Colored Addon Name"] .. " |cffFFFFFFv" .. GetAddOnMetadata(addonName, "Version") .. "|r")
-					tooltip:AddLine("Open the addon menu to search experience data!")
+					tooltip:AddLine("Open the addon menu and search experience data!")
 					tooltip:Show()
 				end,
 				OnClick = function() ExpBuddyLoadMenu() end,
@@ -59,6 +59,30 @@ function ExpBuddyLoadMenu()
 			ExpBuddyMenu:RegisterForDrag("LeftButton")
 			ExpBuddyMenu:SetScript("OnDragStart", ExpBuddyMenu.StartMoving)
 			ExpBuddyMenu:SetScript("OnDragStop", ExpBuddyMenu.StopMovingOrSizing)
+			
+			-- Check settings!
+			if ExpBuddyOptionsDB.MapIcon then
+				ExpBuddyMapIconCB:SetChecked(true)
+			else
+				ExpBuddyMapIconCB:SetChecked(false)
+			end
+			
+			-- Map Icon Check Button
+			ExpBuddyMapIconCB:SetScript("OnEnter", function(self)
+				ShowTooltip(self, "Use this button to enable or disable the minimap icon.")
+			end)
+			ExpBuddyMapIconCB:SetScript("OnLeave", function(self)
+				HideTooltip(self)
+			end)
+			ExpBuddyMapIconCB:SetScript("OnClick", function(self)
+				if self:GetChecked() then
+					ExpBuddyOptionsDB.MapIcon = true
+					ExpBuddyShowMinimapIcon(true)
+				else
+					ExpBuddyOptionsDB.MapIcon = false
+					ExpBuddyShowMinimapIcon(false)
+				end
+			end)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
 				-- Ensure the zone name field has a value.

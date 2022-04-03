@@ -63,12 +63,12 @@
 				</Anchors>
 				<NormalFont style="GameFontNormal"/>
 			</Button>
-			<!--
-			<CheckButton name="HMPDisableAllCB" inherits="UICheckButtonTemplate" text="CheckButton1">
+			<CheckButton name="ExpBuddyMapIconCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>
-					<Anchor point="BOTTOM" relativeTo="HMPOptionsFrame" x="-240" y="282" />
+					<Anchor point="BOTTOMLEFT" relativeTo="ExpBuddyMenu" relativePoint="BOTTOMLEFT" x="15" y="15" />
 				</Anchors>
 			</CheckButton>
+			<!--
 			<CheckButton name="HMPDialogCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>
 					<Anchor point="TOPLEFT" x="39" y="-61" />
@@ -223,15 +223,15 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<!--
-				<FontString name="HMPEmotesText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Emotes" justifyH="CENTER" justifyV="CENTER">
-					<Size x="80" y="20" />
+				<FontString name="ExpBuddyMinimapIconText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Map Icon" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
 					<Anchors>
-						<Anchor point="LEFT" relativeTo="HMPEmotesCB" relativePoint="LEFT" x="15" />
+						<Anchor point="LEFT" relativeTo="ExpBuddyMapIconCB" relativePoint="RIGHT" x="-15" />
 					</Anchors>
 					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
+				<!--
 				<FontString name="HMPGarrisonTblText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Garrison Tables" justifyH="CENTER" justifyV="CENTER">
 					<Size x="140" y="20" />
 					<Anchors>

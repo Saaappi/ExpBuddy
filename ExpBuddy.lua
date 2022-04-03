@@ -8,6 +8,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" then
 		local addonLoaded = ...
 		if addonLoaded == addonName then
+			-- If the options table is nil, then set it to
+			-- an empty table.
+			if ExpBuddyOptionsDB == nil then
+				ExpBuddyOptionsDB = {}
+			end
+		
 			C_Timer.After(2, function()
 				local currentMapId = C_Map.GetBestMapForUnit("player")
 				local currentMapInfo = C_Map.GetMapInfo(currentMapId)
@@ -33,6 +39,10 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
 				end
 			end)
+			
+			if ExpBuddyOptionsDB.MapIcon then
+				ExpBuddyShowMinimapIcon(true)
+			end
 		end
 	end
 	if event == "ZONE_CHANGED_NEW_AREA" then
