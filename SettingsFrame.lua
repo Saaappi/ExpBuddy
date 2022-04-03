@@ -83,6 +83,12 @@ function ExpBuddyLoadMenu()
 				ExpBuddyMapIconCB:SetChecked(false)
 			end
 			
+			-- Make the icons circular.
+			SetPortraitToTexture(ExpBuddyQuestsIcon, "Interface\\ICONS\\achievement_quests_completed_08")
+			SetPortraitToTexture(ExpBuddyKillsIcon, "Interface\\Worldmap\\GlowSkull_64Red")
+			SetPortraitToTexture(ExpBuddyNodesIcon, "Interface\\Worldmap\\TreasureChest_64")
+			SetPortraitToTexture(ExpBuddyExplorationIcon, "Interface\\ICONS\\inv_misc_map02")
+			
 			-- Trace Check Button
 			ExpBuddyTraceCB:SetScript("OnEnter", function(self)
 				ShowTooltip(self, "ExpBuddy will only log experience activity when\ntracing is enabled!")
@@ -123,16 +129,26 @@ function ExpBuddyLoadMenu()
 			end)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
+				-- First, set the texts to empty strings.
+				--
+				-- If nothing is found, then we'll get the
+				-- illusion of no results.
+				ExpBuddyZoneNameReturnText:SetText("")
+				ExpBuddyQuestsXPText:SetText("")
+				ExpBuddyKillsXPText:SetText("")
+				ExpBuddyNodesXPText:SetText("")
+				ExpBuddyExplorationXPText:SetText("")
+				
 				-- Ensure the zone name field has a value.
 				if ExpBuddyZoneNameEditBox:GetText() ~= "" then
 					local zoneName = ExpBuddyZoneNameEditBox:GetText()
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
-							print("|cffFED55F" .. k .. "|r")
-							print("Quests: " .. FormatNumber(ExpBuddyDB[k]["Quests"]))
-							print("Kills: " .. FormatNumber(ExpBuddyDB[k]["Kills"]))
-							print("Nodes: " .. FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							print("Exploration: " .. FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
+							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
 					ExpBuddyZoneNameEditBox:SetText("")
@@ -141,11 +157,11 @@ function ExpBuddyLoadMenu()
 					local zoneName = C_Map.GetMapInfo(C_Map.GetBestMapForUnit("player")).name
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
-							print("|cffFED55F" .. k .. "|r")
-							print("Quests: " .. FormatNumber(ExpBuddyDB[k]["Quests"]))
-							print("Kills: " .. FormatNumber(ExpBuddyDB[k]["Kills"]))
-							print("Nodes: " .. FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							print("Exploration: " .. FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
+							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
 				end

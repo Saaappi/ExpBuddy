@@ -228,6 +228,14 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
+				<FontString name="ExpBuddyZoneNameReturnText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddySearchButton" relativePoint="CENTER" y="-30" />
+					</Anchors>
+					<FontHeight val="16" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
 				<FontString name="ExpBuddyMinimapIconText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Map Icon" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
@@ -244,7 +252,75 @@
 					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
+				<Texture name="ExpBuddyQuestsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-150" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyKillsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-75" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyNodesIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="75" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyExplorationIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="150" />
+					</Anchors>
+				</Texture>
+				<FontString name="ExpBuddyQuestsXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyQuestsIcon" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyKillsXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyKillsIcon" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyNodesXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyNodesIcon" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyExplorationXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyExplorationIcon" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
 				<!--
+				<Texture name="ExpBuddyKillsIcon" file="Interface\ICONS\INV_Sword_1H_MawRaid_D_02" inherits="ColorblindExampleIconTemplate">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="TOP" relativeTo="ExpBuddySearchButton" relativePoint="BOTTOM" x="-25" y="-25" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyKillsIconBorder" file="Interface\Artifacts\Artifacts-PerkRing-Final-Mask">
+					<Size x="32" y="32" />
+					<Anchors>
+						<Anchor point="TOP" relativeTo="ExpBuddySearchButton" relativePoint="BOTTOM" x="-25" y="-25" />
+					</Anchors>
+				</Texture>
 				<FontString name="HMPGarrisonTblText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Garrison Tables" justifyH="CENTER" justifyV="CENTER">
 					<Size x="140" y="20" />
 					<Anchors>
