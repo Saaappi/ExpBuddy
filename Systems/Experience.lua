@@ -54,24 +54,26 @@ e:SetScript("OnEvent", function(self, event, ...)
 	end
 	if event == "QUEST_TURNED_IN" then
 		if ExpBuddyOptionsDB.Trace == false then return end
-		-- The player turned in a quest for some
-		-- experience.
 		local _, experience = ...
-		local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
-		questsExp = questsExp + experience
-		ExpBuddyDB[addonTable.currentMap]["Quests"] = questsExp
-		
-		-- When quests are turned in, it will also
-		-- add to the Nodes category, so let's dock
-		-- whatever we get here from that category.
-		if ExpBuddyDB[addonTable.currentMap]["Nodes"] ~= 0 then
-			ExpBuddyDB[addonTable.currentMap]["Nodes"] = ExpBuddyDB[addonTable.currentMap]["Nodes"] - experience
-		end
-		
-		-- If Verbose is enabled, then print
-		-- to the chat window.
-		if ExpBuddyOptionsDB.Verbose then
-			print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Quests]: " .. questsExp .. " [+" .. experience .. "]")
-		end
+		C_Timer.After(3, function()
+			-- The player turned in a quest for some
+			-- experience.
+			local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
+			questsExp = questsExp + experience
+			ExpBuddyDB[addonTable.currentMap]["Quests"] = questsExp
+			
+			-- When quests are turned in, it will also
+			-- add to the Nodes category, so let's dock
+			-- whatever we get here from that category.
+			if ExpBuddyDB[addonTable.currentMap]["Nodes"] ~= 0 then
+				ExpBuddyDB[addonTable.currentMap]["Nodes"] = ExpBuddyDB[addonTable.currentMap]["Nodes"] - experience
+			end
+			
+			-- If Verbose is enabled, then print
+			-- to the chat window.
+			if ExpBuddyOptionsDB.Verbose then
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Quests]: " .. questsExp .. " [+" .. experience .. "]")
+			end
+		end)
 	end
 end)
