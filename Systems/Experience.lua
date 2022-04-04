@@ -2,6 +2,7 @@ local addonName, addonTable = ...
 local e = CreateFrame("Frame")
 local L_GLOBALSTRINGS = addonTable.L_GLOBALSTRINGS
 local isQuest = false
+local nodesExpDelay = 12
 
 e:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 e:RegisterEvent("CHAT_MSG_SYSTEM")
@@ -22,25 +23,18 @@ e:SetScript("OnEvent", function(self, event, ...)
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Kills]: " .. killsExp .. " [+" .. experience .. "]")
 			end
-		else
-			C_Timer.After(3, function()
-				if not isQuest then
-					-- The player collected a node
-					-- (herb, treasure, etc.) for some
-					-- experience.
-					local nodesExp = ExpBuddyDB[addonTable.currentMap]["Nodes"]
-					local experience = string.match(msg, "%d+"); nodesExp = nodesExp + experience
-					ExpBuddyDB[addonTable.currentMap]["Nodes"] = nodesExp
-					
-					-- If Verbose is enabled, then print
-					-- to the chat window.
-					if ExpBuddyOptionsDB.Verbose then
-						print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Nodes]: " .. nodesExp .. " [+" .. experience .. "]")
-					end
-				else
-					isQuest = false
-				end
-			end)
+		elseif string.find(msg, "experience%.") then
+			-- The player looted a treasure, herb,
+			-- etc for some experience.
+			local miscExp = ExpBuddyDB[addonTable.currentMap]["Misc"]
+			local experience = string.match(msg, "%d+"); miscExp = miscExp + experience
+			ExpBuddyDB[addonTable.currentMap]["Misc"] = miscExp
+			
+			-- If Verbose is enabled, then print
+			-- to the chat window.
+			if ExpBuddyOptionsDB.Verbose then
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Misc]: " .. miscExp .. " [+" .. experience .. "]")
+			end
 		end
 	end
 	if event == "CHAT_MSG_SYSTEM" then

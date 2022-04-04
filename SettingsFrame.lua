@@ -94,9 +94,9 @@ function ExpBuddyLoadMenu()
 			
 			-- Make the icons circular.
 			SetPortraitToTexture(ExpBuddyQuestsIcon, "Interface\\ICONS\\achievement_quests_completed_08")
-			SetPortraitToTexture(ExpBuddyKillsIcon, "Interface\\Worldmap\\GlowSkull_64Red")
-			SetPortraitToTexture(ExpBuddyNodesIcon, "Interface\\Worldmap\\TreasureChest_64")
+			SetPortraitToTexture(ExpBuddyKillsIcon, "Interface\\ICONS\\inv_misc_bone_humanskull_01")
 			SetPortraitToTexture(ExpBuddyExplorationIcon, "Interface\\ICONS\\inv_misc_map02")
+			SetPortraitToTexture(ExpBuddyMiscIcon, "Interface\\ICONS\\inv_misc_questionmark")
 			
 			-- Trace Check Button
 			ExpBuddyTraceCB:SetScript("OnEnter", function(self)
@@ -165,7 +165,7 @@ function ExpBuddyLoadMenu()
 				ExpBuddyZoneNameReturnText:SetText("")
 				ExpBuddyQuestsXPText:SetText("")
 				ExpBuddyKillsXPText:SetText("")
-				ExpBuddyNodesXPText:SetText("")
+				ExpBuddyMiscXPText:SetText("")
 				ExpBuddyExplorationXPText:SetText("")
 				
 				-- Ensure the zone name field has a value.
@@ -176,7 +176,7 @@ function ExpBuddyLoadMenu()
 							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
 							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyMiscXPText:SetText(FormatNumber(ExpBuddyDB[k]["Misc"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
@@ -189,7 +189,7 @@ function ExpBuddyLoadMenu()
 							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
 							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyMiscXPText:SetText(FormatNumber(ExpBuddyDB[k]["Misc"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
