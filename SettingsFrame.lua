@@ -178,6 +178,9 @@ function ExpBuddyLoadMenu()
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
 							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							
+							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
+							ExpBuddyTotalXPReturnText:SetText(FormatNumber(totalExp))
 						end
 					end
 					ExpBuddyZoneNameEditBox:SetText("")
@@ -191,6 +194,9 @@ function ExpBuddyLoadMenu()
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
 							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							
+							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
+							ExpBuddyTotalXPReturnText:SetText(FormatNumber(totalExp))
 						end
 					end
 				end

@@ -122,6 +122,14 @@
 					<FontHeight val="16" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
+				<FontString name="ExpBuddyTotalXPReturnText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="300" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyZoneNameReturnText" relativePoint="CENTER" y="-90" />
+					</Anchors>
+					<FontHeight val="16" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
 				<FontString name="ExpBuddyMinimapIconText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Map Icon" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
