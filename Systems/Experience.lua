@@ -55,7 +55,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 	if event == "QUEST_TURNED_IN" then
 		if ExpBuddyOptionsDB.Trace == false then return end
 		local _, experience = ...
-		C_Timer.After(3, function()
+		C_Timer.After(1.5, function()
 			-- The player turned in a quest for some
 			-- experience.
 			local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
