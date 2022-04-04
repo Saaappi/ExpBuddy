@@ -1,8 +1,6 @@
 local addonName, addonTable = ...
 local e = CreateFrame("Frame")
 local L_GLOBALSTRINGS = addonTable.L_GLOBALSTRINGS
-local isQuest = false
-local nodesExpDelay = 12
 
 e:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 e:RegisterEvent("CHAT_MSG_SYSTEM")
@@ -58,7 +56,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 		if ExpBuddyOptionsDB.Trace == false then return end
 		-- The player turned in a quest for some
 		-- experience.
-		isQuest = true
 		local _, experience = ...
 		local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
 		questsExp = questsExp + experience
