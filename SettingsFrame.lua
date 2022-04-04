@@ -120,7 +120,7 @@ function ExpBuddyLoadMenu()
 			
 			-- Verbose Check Button
 			ExpBuddyVerboseCB:SetScript("OnEnter", function(self)
-				ShowTooltip(self, "When enabled, experience activity will be logged\nto the chat window.\n\nThis setting is only available when tracing\nis enabled.")
+				ShowTooltip(self, "When enabled, experience activity will be logged\nto the chat window.\n\nThis setting is only available when tracing\nis enabled.\n\n|cffFFFFFFNote|r: This setting is considered \"debug\". What you experience\nwhen using this setting may not be considered broken.")
 			end)
 			ExpBuddyVerboseCB:SetScript("OnLeave", function(self)
 				HideTooltip(self)
