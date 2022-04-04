@@ -164,7 +164,7 @@
 						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="75" />
 					</Anchors>
 				</Texture>
-				<Texture name="ExpBuddyMiscIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+				<Texture name="ExpBuddyNodesIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
 					<Size x="24" y="24" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="150" />
@@ -195,10 +195,10 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<FontString name="ExpBuddyMiscXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyNodesXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyMiscIcon" relativePoint="CENTER" y="-20" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyNodesIcon" relativePoint="CENTER" y="-20" />
 					</Anchors>
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />

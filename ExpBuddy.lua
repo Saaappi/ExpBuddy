@@ -35,7 +35,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyDB[addonTable.currentMap] = {}
 					ExpBuddyDB[addonTable.currentMap]["Quests"] = 0
 					ExpBuddyDB[addonTable.currentMap]["Kills"] = 0
-					ExpBuddyDB[addonTable.currentMap]["Misc"] = 0
+					ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
 					ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
 				end
 			end)
@@ -60,7 +60,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			ExpBuddyDB[addonTable.currentMap] = {}
 			ExpBuddyDB[addonTable.currentMap]["Quests"] = 0
 			ExpBuddyDB[addonTable.currentMap]["Kills"] = 0
-			ExpBuddyDB[addonTable.currentMap]["Misc"] = 0
+			ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
 			ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
 		end
 	end

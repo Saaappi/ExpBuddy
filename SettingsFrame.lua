@@ -96,7 +96,7 @@ function ExpBuddyLoadMenu()
 			SetPortraitToTexture(ExpBuddyQuestsIcon, "Interface\\ICONS\\achievement_quests_completed_08")
 			SetPortraitToTexture(ExpBuddyKillsIcon, "Interface\\ICONS\\inv_misc_bone_humanskull_01")
 			SetPortraitToTexture(ExpBuddyExplorationIcon, "Interface\\ICONS\\inv_misc_map02")
-			SetPortraitToTexture(ExpBuddyMiscIcon, "Interface\\ICONS\\inv_misc_questionmark")
+			SetPortraitToTexture(ExpBuddyNodesIcon, "Interface\\ICONS\\trade_archaeology_chestoftinyglassanimals")
 			
 			-- Trace Check Button
 			ExpBuddyTraceCB:SetScript("OnEnter", function(self)
@@ -165,7 +165,7 @@ function ExpBuddyLoadMenu()
 				ExpBuddyZoneNameReturnText:SetText("")
 				ExpBuddyQuestsXPText:SetText("")
 				ExpBuddyKillsXPText:SetText("")
-				ExpBuddyMiscXPText:SetText("")
+				ExpBuddyNodesXPText:SetText("")
 				ExpBuddyExplorationXPText:SetText("")
 				
 				-- Ensure the zone name field has a value.
@@ -176,7 +176,7 @@ function ExpBuddyLoadMenu()
 							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
 							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyMiscXPText:SetText(FormatNumber(ExpBuddyDB[k]["Misc"]))
+							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end
@@ -189,7 +189,7 @@ function ExpBuddyLoadMenu()
 							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
 							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
 							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyMiscXPText:SetText(FormatNumber(ExpBuddyDB[k]["Misc"]))
+							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 						end
 					end

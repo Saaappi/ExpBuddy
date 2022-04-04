@@ -26,14 +26,14 @@ e:SetScript("OnEvent", function(self, event, ...)
 		elseif string.find(msg, "experience%.") then
 			-- The player looted a treasure, herb,
 			-- etc for some experience.
-			local miscExp = ExpBuddyDB[addonTable.currentMap]["Misc"]
+			local miscExp = ExpBuddyDB[addonTable.currentMap]["Nodes"]
 			local experience = string.match(msg, "%d+"); miscExp = miscExp + experience
-			ExpBuddyDB[addonTable.currentMap]["Misc"] = miscExp
+			ExpBuddyDB[addonTable.currentMap]["Nodes"] = miscExp
 			
 			-- If Verbose is enabled, then print
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Misc]: " .. miscExp .. " [+" .. experience .. "]")
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Nodes]: " .. miscExp .. " [+" .. experience .. "]")
 			end
 		end
 	end
@@ -63,6 +63,13 @@ e:SetScript("OnEvent", function(self, event, ...)
 		local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
 		questsExp = questsExp + experience
 		ExpBuddyDB[addonTable.currentMap]["Quests"] = questsExp
+		
+		-- When quests are turned in, it will also
+		-- add to the Nodes category, so let's dock
+		-- whatever we get here from that category.
+		if ExpBuddyDB[addonTable.currentMap]["Nodes"] ~= 0 then
+			ExpBuddyDB[addonTable.currentMap]["Nodes"] = ExpBuddyDB[addonTable.currentMap]["Nodes"] - experience
+		end
 		
 		-- If Verbose is enabled, then print
 		-- to the chat window.
