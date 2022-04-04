@@ -16,6 +16,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local killsExp = ExpBuddyDB[addonTable.currentMap]["Kills"]
 			local experience = string.match(msg, "%d+"); killsExp = killsExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Kills"] = killsExp
+			
+			-- If Verbose is enabled, then print
+			-- to the chat window.
+			if ExpBuddyOptionsDB.Verbose then
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Kills]: " .. killsExp .. " [+" .. experience .. "]")
+			end
 		else
 			C_Timer.After(3, function()
 				if not isQuest then
@@ -25,6 +31,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 					local nodesExp = ExpBuddyDB[addonTable.currentMap]["Nodes"]
 					local experience = string.match(msg, "%d+"); nodesExp = nodesExp + experience
 					ExpBuddyDB[addonTable.currentMap]["Nodes"] = nodesExp
+					
+					-- If Verbose is enabled, then print
+					-- to the chat window.
+					if ExpBuddyOptionsDB.Verbose then
+						print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Nodes]: " .. nodesExp .. " [+" .. experience .. "]")
+					end
 				else
 					isQuest = false
 				end
@@ -40,6 +52,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local explorationExp = ExpBuddyDB[addonTable.currentMap]["Exploration"]
 			local experience = string.match(msg, "%d+"); explorationExp = explorationExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Exploration"] = explorationExp
+			
+			-- If Verbose is enabled, then print
+			-- to the chat window.
+			if ExpBuddyOptionsDB.Verbose then
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "]")
+			end
 		end
 	end
 	if event == "QUEST_TURNED_IN" then
@@ -51,5 +69,11 @@ e:SetScript("OnEvent", function(self, event, ...)
 		local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
 		questsExp = questsExp + experience
 		ExpBuddyDB[addonTable.currentMap]["Quests"] = questsExp
+		
+		-- If Verbose is enabled, then print
+		-- to the chat window.
+		if ExpBuddyOptionsDB.Verbose then
+			print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Quests]: " .. questsExp .. " [+" .. experience .. "]")
+		end
 	end
 end)

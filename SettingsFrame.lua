@@ -74,8 +74,17 @@ function ExpBuddyLoadMenu()
 			-- Check settings!
 			if ExpBuddyOptionsDB.Trace then
 				ExpBuddyTraceCB:SetChecked(true)
+				ExpBuddyVerboseCB:Show()
+				ExpBuddyVerboseText:Show()
 			else
 				ExpBuddyTraceCB:SetChecked(false)
+				ExpBuddyVerboseCB:Hide()
+				ExpBuddyVerboseText:Hide()
+			end
+			if ExpBuddyOptionsDB.Verbose then
+				ExpBuddyVerboseCB:SetChecked(true)
+			else
+				ExpBuddyVerboseCB:SetChecked(false)
 			end
 			if ExpBuddyOptionsDB.MapIcon then
 				ExpBuddyMapIconCB:SetChecked(true)
@@ -99,8 +108,28 @@ function ExpBuddyLoadMenu()
 			ExpBuddyTraceCB:SetScript("OnClick", function(self)
 				if self:GetChecked() then
 					ExpBuddyOptionsDB.Trace = true
+					ExpBuddyVerboseCB:Show()
+					ExpBuddyVerboseText:Show()
 				else
 					ExpBuddyOptionsDB.Trace = false
+					ExpBuddyOptionsDB.Verbose = false
+					ExpBuddyVerboseCB:Hide()
+					ExpBuddyVerboseText:Hide()
+				end
+			end)
+			
+			-- Verbose Check Button
+			ExpBuddyVerboseCB:SetScript("OnEnter", function(self)
+				ShowTooltip(self, "When enabled, experience activity will be logged\nto the chat window.\n\nThis setting is only available when tracing\nis enabled.")
+			end)
+			ExpBuddyVerboseCB:SetScript("OnLeave", function(self)
+				HideTooltip(self)
+			end)
+			ExpBuddyVerboseCB:SetScript("OnClick", function(self)
+				if self:GetChecked() then
+					ExpBuddyOptionsDB.Verbose = true
+				else
+					ExpBuddyOptionsDB.Verbose = false
 				end
 			end)
 			

@@ -73,6 +73,11 @@
 					<Anchor point="BOTTOM" relativeTo="ExpBuddyMapIconCB" relativePoint="TOP" y="5" />
 				</Anchors>
 			</CheckButton>
+			<CheckButton name="ExpBuddyVerboseCB" inherits="UICheckButtonTemplate" text="CheckButton1">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="ExpBuddyTraceCB" relativePoint="RIGHT" x="45" />
+				</Anchors>
+			</CheckButton>
 		</Frames>
 		<Layers>
 			<Layer level="OVERLAY">
@@ -129,6 +134,14 @@
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="ExpBuddyTraceCB" relativePoint="RIGHT" x="-30" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyVerboseText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Verbose" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="ExpBuddyVerboseCB" relativePoint="RIGHT" x="-25" />
 					</Anchors>
 					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
