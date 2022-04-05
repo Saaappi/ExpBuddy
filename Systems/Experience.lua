@@ -1,6 +1,7 @@
 local addonName, addonTable = ...
 local e = CreateFrame("Frame")
 local L_GLOBALSTRINGS = addonTable.L_GLOBALSTRINGS
+local maxLevel = 60
 
 e:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 e:RegisterEvent("CHAT_MSG_SYSTEM")
@@ -8,6 +9,7 @@ e:RegisterEvent("QUEST_TURNED_IN")
 e:SetScript("OnEvent", function(self, event, ...)
 	if event == "CHAT_MSG_COMBAT_XP_GAIN" then
 		if ExpBuddyOptionsDB.Trace == false then return end
+		if addonTable.playerLevel == maxLevel then return end
 		local msg = ...
 		if string.find(msg, "dies") then
 			-- The player defeated an NPC for some
@@ -37,6 +39,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 	end
 	if event == "CHAT_MSG_SYSTEM" then
 		if ExpBuddyOptionsDB.Trace == false then return end
+		if addonTable.playerLevel == maxLevel then return end
 		local msg = ...
 		if string.find(msg, "Discovered") then
 			-- The player explored an area for some
@@ -54,6 +57,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 	end
 	if event == "QUEST_TURNED_IN" then
 		if ExpBuddyOptionsDB.Trace == false then return end
+		if addonTable.playerLevel == maxLevel then return end
 		local _, experience = ...
 		C_Timer.After(1.5, function()
 			-- The player turned in a quest for some

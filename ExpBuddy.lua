@@ -43,7 +43,13 @@ e:SetScript("OnEvent", function(self, event, ...)
 			if ExpBuddyOptionsDB.MapIcon then
 				ExpBuddyShowMinimapIcon(true)
 			end
+			
+			addonTable.playerLevel = UnitLevel("player")
 		end
+	end
+	if event == "PLAYER_LEVEL_UP" then
+		local level = ...
+		addonTable.playerLevel = level
 	end
 	if event == "ZONE_CHANGED_NEW_AREA" then
 		local currentMapId = C_Map.GetBestMapForUnit("player")
