@@ -60,9 +60,12 @@ end
 function ExpBuddyLoadMenu()
 	if ExpBuddyMenu:IsVisible() then
 		ExpBuddyMenu:Hide()
+		PlaySound(SOUNDKIT.IG_SPELLBOOK_CLOSE)
 	else
 		if UnitAffectingCombat("player") == false then
 			ExpBuddyMenu:Show()
+			
+			PlaySound(SOUNDKIT.IG_SPELLBOOK_OPEN)
 			
 			-- Make the menu movable.
 			ExpBuddyMenu:SetMovable(true)
