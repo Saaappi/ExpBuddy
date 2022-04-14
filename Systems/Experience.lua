@@ -3,6 +3,14 @@ local e = CreateFrame("Frame")
 local L_GLOBALSTRINGS = addonTable.L_GLOBALSTRINGS
 local maxLevel = 60
 
+local function FindNumber(str, nth)
+	local arr = {}
+	for i in string.gmatch(str, "%d+") do
+		table.insert(arr, i)
+	end
+	return arr[nth]
+end
+
 e:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 e:RegisterEvent("CHAT_MSG_SYSTEM")
 e:RegisterEvent("QUEST_TURNED_IN")
@@ -15,8 +23,21 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- The player defeated an NPC for some
 			-- experience.
 			local killsExp = ExpBuddyDB[addonTable.currentMap]["Kills"]
-			local experience = string.match(msg, "%d+"); killsExp = killsExp + experience
+			local experience = FindNumber(msg, 1); killsExp = killsExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Kills"] = killsExp
+			
+			-- If the player is rested, then let's
+			-- track how much XP they earned from
+			-- kills while rested.
+			if GetXPExhaustion() > 0 then
+				-- In case the value doesn't exist in the table.
+				if ExpBuddyDB[addonTable.currentMap]["Rested"] == nil then
+					ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
+				end
+				local restedExp = ExpBuddyDB[addonTable.currentMap]["Rested"]
+				local experience = FindNumber(msg, 2); restedExp = restedExp + experience
+				ExpBuddyDB[addonTable.currentMap]["Rested"] = restedExp
+			end
 			
 			-- If Verbose is enabled, then print
 			-- to the chat window.
@@ -27,7 +48,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- The player looted a treasure, herb,
 			-- etc for some experience.
 			local nodesExp = ExpBuddyDB[addonTable.currentMap]["Nodes"]
-			local experience = string.match(msg, "%d+"); nodesExp = nodesExp + experience
+			local experience = FindNumber(msg, 1); nodesExp = nodesExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Nodes"] = nodesExp
 			
 			-- If Verbose is enabled, then print
@@ -45,7 +66,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- The player explored an area for some
 			-- experience.
 			local explorationExp = ExpBuddyDB[addonTable.currentMap]["Exploration"]
-			local experience = string.match(msg, "%d+"); explorationExp = explorationExp + experience
+			local experience = FindNumber(msg, 1); explorationExp = explorationExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Exploration"] = explorationExp
 			
 			-- If Verbose is enabled, then print

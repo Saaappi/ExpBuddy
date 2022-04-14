@@ -157,25 +157,31 @@
 				<Texture name="ExpBuddyQuestsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
 					<Size x="24" y="24" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-150" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-175" />
 					</Anchors>
 				</Texture>
 				<Texture name="ExpBuddyKillsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
 					<Size x="24" y="24" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-75" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="-100" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyRestedExpIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" />
 					</Anchors>
 				</Texture>
 				<Texture name="ExpBuddyExplorationIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
 					<Size x="24" y="24" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="75" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="100" />
 					</Anchors>
 				</Texture>
 				<Texture name="ExpBuddyNodesIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
 					<Size x="24" y="24" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="150" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="CENTER" x="175" />
 					</Anchors>
 				</Texture>
 				
@@ -191,6 +197,14 @@
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyKillsIcon" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyRestedExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyRestedExpIcon" relativePoint="CENTER" y="-20" />
 					</Anchors>
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
