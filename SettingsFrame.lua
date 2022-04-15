@@ -219,10 +219,10 @@ function ExpBuddyLoadMenu()
 							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 							
-							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 2)*100 .. "%")
+							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
 							
 							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
 							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
@@ -241,10 +241,10 @@ function ExpBuddyLoadMenu()
 							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 							
-							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 2)*100 .. "%")
-							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 2)*100 .. "%")
+							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
+							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
 							
 							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
 							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
