@@ -30,7 +30,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- If the player is rested, then let's
 			-- track how much XP they earned from
 			-- kills while rested.
-			if GetXPExhaustion() > 0 then
+			if GetXPExhaustion() then
 				-- In case the value doesn't exist in the table.
 				if ExpBuddyDB[addonTable.currentMap]["Rested"] == nil then
 					ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
