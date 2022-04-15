@@ -172,6 +172,11 @@ function ExpBuddyLoadMenu()
 					button1 = "Yes",
 					button2 = "No",
 					OnAccept = function()
+						for k,_ in pairs(ExpBuddyDB) do
+							for i,_ in pairs(ExpBuddyDB[k]) do 
+								ExpBuddyDB[k][i] = 0
+							end
+						end
 						for k,_ in pairs(ExpBuddyPctDB) do
 							for i,_ in pairs(ExpBuddyPctDB[k]) do 
 								ExpBuddyPctDB[k][i] = 0
