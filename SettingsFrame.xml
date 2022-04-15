@@ -114,18 +114,10 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<FontString name="ExpBuddyZoneNameReturnText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyZoneNameText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="300" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddySearchButton" relativePoint="CENTER" y="-30" />
-					</Anchors>
-					<FontHeight val="16" />
-					<Color r="1" g="1" b="1" />
-				</FontString>
-				<FontString name="ExpBuddyTotalXPReturnText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
-					<Size x="300" y="20" />
-					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyZoneNameReturnText" relativePoint="CENTER" y="-90" />
 					</Anchors>
 					<FontHeight val="16" />
 					<Color r="1" g="1" b="1" />
@@ -185,7 +177,7 @@
 					</Anchors>
 				</Texture>
 				
-				<FontString name="ExpBuddyQuestsXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyQuestsExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyQuestsIcon" relativePoint="CENTER" y="-20" />
@@ -193,12 +185,28 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<FontString name="ExpBuddyKillsXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyQuestsExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyQuestsExpText" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyKillsExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyKillsIcon" relativePoint="CENTER" y="-20" />
 					</Anchors>
 					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyKillsExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyKillsExpText" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="12" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
 				<FontString name="ExpBuddyRestedExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
@@ -209,7 +217,15 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<FontString name="ExpBuddyExplorationXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyRestedExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyRestedExpText" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyExplorationExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyExplorationIcon" relativePoint="CENTER" y="-20" />
@@ -217,12 +233,36 @@
 					<FontHeight val="14" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
-				<FontString name="ExpBuddyNodesXPText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+				<FontString name="ExpBuddyExplorationExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyExplorationExpText" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyNodesExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="100" y="20" />
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="ExpBuddyNodesIcon" relativePoint="CENTER" y="-20" />
 					</Anchors>
 					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyNodesExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyNodesExpText" relativePoint="CENTER" y="-20" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTotalExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="300" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyZoneNameText" relativePoint="CENTER" y="-100" />
+					</Anchors>
+					<FontHeight val="16" />
 					<Color r="1" g="1" b="1" />
 				</FontString>
 			</Layer>

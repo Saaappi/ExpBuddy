@@ -24,6 +24,9 @@ e:SetScript("OnEvent", function(self, event, ...)
 				if ExpBuddyDB == nil then
 					ExpBuddyDB = {}
 				end
+				if ExpBuddyPctDB == nil then
+					ExpBuddyPctDB = {}
+				end
 				
 				-- If the player's current zone isn't in the
 				-- table, then add it.
@@ -39,6 +42,21 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
 					ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
 				end
+				
+				-- If the player's current zone isn't in the
+				-- table, then add it.
+				--
+				-- If the player's current zone isn't in the
+				-- table, then none of the subtables will be
+				-- either.
+				if ExpBuddyPctDB[addonTable.currentMap] == nil then
+					ExpBuddyPctDB[addonTable.currentMap] = {}
+					ExpBuddyPctDB[addonTable.currentMap]["Quests"] = 0
+					ExpBuddyPctDB[addonTable.currentMap]["Kills"] = 0
+					ExpBuddyPctDB[addonTable.currentMap]["Rested"] = 0
+					ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = 0
+					ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = 0
+				end
 			end)
 			
 			if ExpBuddyOptionsDB.MapIcon then
@@ -51,6 +69,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 	if event == "PLAYER_LEVEL_UP" then
 		local level = ...
 		addonTable.playerLevel = level
+		
+		-- Reset all the percentage values back to
+		-- 0 once the player levels up.
+		for k,v in pairs(ExpBuddyPctDB) do
+			ExpBuddyPctDB[k][v] = 0
+		end
 	end
 	if event == "ZONE_CHANGED_NEW_AREA" then
 		local currentMapId = C_Map.GetBestMapForUnit("player")
@@ -70,6 +94,15 @@ e:SetScript("OnEvent", function(self, event, ...)
 			ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
 			ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
 			ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
+		end
+		
+		if ExpBuddyPctDB[addonTable.currentMap] == nil then
+			ExpBuddyPctDB[addonTable.currentMap] = {}
+			ExpBuddyPctDB[addonTable.currentMap]["Quests"] = 0
+			ExpBuddyPctDB[addonTable.currentMap]["Kills"] = 0
+			ExpBuddyPctDB[addonTable.currentMap]["Rested"] = 0
+			ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = 0
+			ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = 0
 		end
 	end
 end)

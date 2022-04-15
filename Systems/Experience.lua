@@ -25,6 +25,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local killsExp = ExpBuddyDB[addonTable.currentMap]["Kills"]
 			local experience = FindNumber(msg, 1); killsExp = killsExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Kills"] = killsExp
+			ExpBuddyPctDB[addonTable.currentMap]["Kills"] = killsExp
 			
 			-- If the player is rested, then let's
 			-- track how much XP they earned from
@@ -37,6 +38,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 				local restedExp = ExpBuddyDB[addonTable.currentMap]["Rested"]
 				local experience = FindNumber(msg, 2); restedExp = restedExp + experience
 				ExpBuddyDB[addonTable.currentMap]["Rested"] = restedExp
+				ExpBuddyPctDB[addonTable.currentMap]["Rested"] = restedExp
 			end
 			
 			-- If Verbose is enabled, then print
@@ -50,6 +52,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local nodesExp = ExpBuddyDB[addonTable.currentMap]["Nodes"]
 			local experience = FindNumber(msg, 1); nodesExp = nodesExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Nodes"] = nodesExp
+			ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = nodesExp
 			
 			-- If Verbose is enabled, then print
 			-- to the chat window.
@@ -68,6 +71,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local explorationExp = ExpBuddyDB[addonTable.currentMap]["Exploration"]
 			local experience = FindNumber(msg, 1); explorationExp = explorationExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Exploration"] = explorationExp
+			ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = explorationExp
 			
 			-- If Verbose is enabled, then print
 			-- to the chat window.
@@ -86,6 +90,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local questsExp = ExpBuddyDB[addonTable.currentMap]["Quests"]
 			questsExp = questsExp + experience
 			ExpBuddyDB[addonTable.currentMap]["Quests"] = questsExp
+			ExpBuddyPctDB[addonTable.currentMap]["Quests"] = questsExp
 			
 			-- When quests are turned in, it will also
 			-- add to the Nodes category, so let's dock

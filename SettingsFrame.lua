@@ -28,6 +28,11 @@ local function FormatNumber(number)
 	return formattedNumber
 end
 
+local function Round(num, places)
+    local mult = 10^(places or 0)
+    return math.floor(num * mult + 0.5)/mult
+end
+
 function ExpBuddyShowMinimapIcon(show)
 	if show then
 		if icon ~= "" then
@@ -166,27 +171,39 @@ function ExpBuddyLoadMenu()
 				--
 				-- If nothing is found, then we'll get the
 				-- illusion of no results.
-				ExpBuddyZoneNameReturnText:SetText("")
-				ExpBuddyQuestsXPText:SetText("")
-				ExpBuddyKillsXPText:SetText("")
+				ExpBuddyZoneNameText:SetText("")
+				ExpBuddyQuestsExpText:SetText("")
+				ExpBuddyKillsExpText:SetText("")
 				ExpBuddyRestedExpText:SetText("")
-				ExpBuddyNodesXPText:SetText("")
-				ExpBuddyExplorationXPText:SetText("")
+				ExpBuddyNodesExpText:SetText("")
+				ExpBuddyExplorationExpText:SetText("")
+				
+				ExpBuddyQuestsExpPctText:SetText("")
+				ExpBuddyKillsExpPctText:SetText("")
+				ExpBuddyRestedExpPctText:SetText("")
+				ExpBuddyNodesExpPctText:SetText("")
+				ExpBuddyExplorationExpPctText:SetText("")
 				
 				-- Ensure the zone name field has a value.
 				if ExpBuddyZoneNameEditBox:GetText() ~= "" then
 					local zoneName = ExpBuddyZoneNameEditBox:GetText()
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
-							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
-							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
-							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+							ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
+							ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+							ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
 							ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
-							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							
+							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyRestedExpPctText:SetText(Round((ExpBuddyPctDB[k]["Rested"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 2) .. "%")
 							
 							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
-							ExpBuddyTotalXPReturnText:SetText(FormatNumber(totalExp))
+							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
 						end
 					end
 					ExpBuddyZoneNameEditBox:SetText("")
@@ -195,15 +212,21 @@ function ExpBuddyLoadMenu()
 					local zoneName = C_Map.GetMapInfo(C_Map.GetBestMapForUnit("player")).name
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
-							ExpBuddyZoneNameReturnText:SetText("|cffFED55F" .. k .. "|r")
-							ExpBuddyQuestsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
-							ExpBuddyKillsXPText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+							ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
+							ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+							ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
 							ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
-							ExpBuddyNodesXPText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							ExpBuddyExplorationXPText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+							
+							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyRestedExpPctText:SetText(Round((ExpBuddyPctDB[k]["Rested"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 2) .. "%")
+							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 2) .. "%")
 							
 							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
-							ExpBuddyTotalXPReturnText:SetText(FormatNumber(totalExp))
+							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
 						end
 					end
 				end

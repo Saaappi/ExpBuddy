@@ -3,7 +3,7 @@
 ## Name: ExpBuddy
 ## Notes: Track experience gains so you can determine what attributes to those sweet dings!
 ## SavedVariables: ExpBuddyOptionsDB
-## SavedVariablesPerCharacter: ExpBuddyDB
+## SavedVariablesPerCharacter: ExpBuddyDB, ExpBuddyPctDB
 ## Title: ExpBuddy
 ## Version: 1.0.0
 
