@@ -166,6 +166,25 @@ function ExpBuddyLoadMenu()
 				HideTooltip(self)
 			end)
 			
+			ExpBuddyResetButton:SetScript("OnClick", function(self)
+				StaticPopupDialogs["EXPBUDDY_RESETPCT"] = {
+					text = "Are you sure you want to reset the percent-level data?",
+					button1 = "Yes",
+					button2 = "No",
+					OnAccept = function()
+						for k,_ in pairs(ExpBuddyPctDB) do
+							for i,_ in pairs(ExpBuddyPctDB[k]) do 
+								ExpBuddyPctDB[k][i] = 0
+							end
+						end
+					end,
+					timeout = 0,
+					whileDead = true,
+					hideOnEscape = true,
+				}
+				StaticPopup_Show("EXPBUDDY_RESETPCT")
+			end)
+			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
 				-- First, set the texts to empty strings.
 				--

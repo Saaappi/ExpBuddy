@@ -63,6 +63,13 @@
 				</Anchors>
 				<NormalFont style="GameFontNormal"/>
 			</Button>
+			<Button name="ExpBuddyResetButton" inherits="UIPanelButtonTemplate" text="|cffFFFFFFReset|r">
+				<Size x="60" y="20"/>
+				<Anchors>
+					<Anchor point="CENTER" relativeTo="ExpBuddyMenu" relativePoint="BOTTOMRIGHT" x="-45" y="20" />
+				</Anchors>
+				<NormalFont style="GameFontNormal"/>
+			</Button>
 			<CheckButton name="ExpBuddyMapIconCB" inherits="UICheckButtonTemplate" text="CheckButton1">
 				<Anchors>
 					<Anchor point="BOTTOMLEFT" relativeTo="ExpBuddyMenu" relativePoint="BOTTOMLEFT" x="15" y="15" />

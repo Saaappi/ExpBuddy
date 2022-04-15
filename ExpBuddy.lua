@@ -72,8 +72,10 @@ e:SetScript("OnEvent", function(self, event, ...)
 		
 		-- Reset all the percentage values back to
 		-- 0 once the player levels up.
-		for k,v in pairs(ExpBuddyPctDB) do
-			ExpBuddyPctDB[k][v] = 0
+		for k,_ in pairs(ExpBuddyPctDB) do
+			for i,_ in pairs(ExpBuddyPctDB[k]) do 
+				ExpBuddyPctDB[k][i] = 0
+			end
 		end
 	end
 	if event == "ZONE_CHANGED_NEW_AREA" then
