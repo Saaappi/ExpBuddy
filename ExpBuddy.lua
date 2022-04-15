@@ -53,7 +53,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyPctDB[addonTable.currentMap] = {}
 					ExpBuddyPctDB[addonTable.currentMap]["Quests"] = 0
 					ExpBuddyPctDB[addonTable.currentMap]["Kills"] = 0
-					ExpBuddyPctDB[addonTable.currentMap]["Rested"] = 0
 					ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = 0
 					ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = 0
 				end
@@ -72,11 +71,13 @@ e:SetScript("OnEvent", function(self, event, ...)
 		
 		-- Reset all the percentage values back to
 		-- 0 once the player levels up.
-		for k,_ in pairs(ExpBuddyPctDB) do
-			for i,_ in pairs(ExpBuddyPctDB[k]) do 
-				ExpBuddyPctDB[k][i] = 0
+		C_Timer.After(2, function()
+			for k,_ in pairs(ExpBuddyPctDB) do
+				for i,_ in pairs(ExpBuddyPctDB[k]) do 
+					ExpBuddyPctDB[k][i] = 0
+				end
 			end
-		end
+		end)
 	end
 	if event == "ZONE_CHANGED_NEW_AREA" then
 		local currentMapId = C_Map.GetBestMapForUnit("player")
@@ -102,7 +103,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 			ExpBuddyPctDB[addonTable.currentMap] = {}
 			ExpBuddyPctDB[addonTable.currentMap]["Quests"] = 0
 			ExpBuddyPctDB[addonTable.currentMap]["Kills"] = 0
-			ExpBuddyPctDB[addonTable.currentMap]["Rested"] = 0
 			ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = 0
 			ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = 0
 		end
