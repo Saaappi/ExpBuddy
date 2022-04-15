@@ -167,10 +167,10 @@ function ExpBuddyLoadMenu()
 			end)
 			
 			ExpBuddyResetButton:SetScript("OnClick", function(self)
-				StaticPopupDialogs["EXPBUDDY_RESETPCT"] = {
-					text = "Are you sure you want to reset the percent-level data?",
-					button1 = "Yes",
-					button2 = "No",
+				StaticPopupDialogs["EXPBUDDY_RESET_ALL"] = {
+					text = "Are you sure you want to reset the data for this character?",
+					button1 = "|cffFFFFFFYes|r",
+					button2 = "|cffFFFFFFNo|r",
 					OnAccept = function()
 						for k,_ in pairs(ExpBuddyDB) do
 							for i,_ in pairs(ExpBuddyDB[k]) do 
@@ -187,7 +187,7 @@ function ExpBuddyLoadMenu()
 					whileDead = true,
 					hideOnEscape = true,
 				}
-				StaticPopup_Show("EXPBUDDY_RESETPCT")
+				StaticPopup_Show("EXPBUDDY_RESET_ALL")
 			end)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
