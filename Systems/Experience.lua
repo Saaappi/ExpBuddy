@@ -96,6 +96,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- whatever we get here from that category.
 			if ExpBuddyDB[addonTable.currentMap]["Nodes"] ~= 0 then
 				ExpBuddyDB[addonTable.currentMap]["Nodes"] = ExpBuddyDB[addonTable.currentMap]["Nodes"] - experience
+			end
+			if ExpBuddy[addonTable.currentMap]["Nodes"] ~= 0 then
 				ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = ExpBuddyPctDB[addonTable.currentMap]["Nodes"] - experience
 			end
 			
