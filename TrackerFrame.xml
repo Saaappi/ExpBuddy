@@ -171,9 +171,6 @@
 			</Layer>
 		</Layers>
 		<Scripts>
-			<OnLoad>
-				tinsert(UISpecialFrames, self:GetName())
-			</OnLoad>
 			<OnShow>
 				PlaySound(SOUNDKIT.IG_SPELLBOOK_OPEN)
 			</OnShow>
