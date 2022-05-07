@@ -15,7 +15,6 @@ local function UpdateZone()
 	else
 		addonTable.currentMap = currentMapInfo.name
 	end
-	print(addonTable.currentMap)
 	
 	-- If the player's current zone isn't in the
 	-- table, then add it.

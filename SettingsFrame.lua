@@ -33,6 +33,69 @@ local function Round(num, places)
     return math.floor(num * mult + 0.5)/mult
 end
 
+function UpdateExperience()
+	-- First, set the texts to empty strings.
+	--
+	-- If nothing is found, then we'll get the
+	-- illusion of no results.
+	ExpBuddyZoneNameText:SetText("")
+	ExpBuddyQuestsExpText:SetText("")
+	ExpBuddyKillsExpText:SetText("")
+	ExpBuddyRestedExpText:SetText("")
+	ExpBuddyNodesExpText:SetText("")
+	ExpBuddyExplorationExpText:SetText("")
+	
+	ExpBuddyQuestsExpPctText:SetText("")
+	ExpBuddyKillsExpPctText:SetText("")
+	ExpBuddyNodesExpPctText:SetText("")
+	ExpBuddyExplorationExpPctText:SetText("")
+	
+	-- Ensure the zone name field has a value.
+	if ExpBuddyZoneNameEditBox:GetText() ~= "" then
+		local zoneName = ExpBuddyZoneNameEditBox:GetText()
+		for k,v in pairs(ExpBuddyDB) do
+			if string.find(string.lower(k), string.lower(zoneName)) then
+				ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
+				ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+				ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+				ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
+				ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+				ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+				
+				ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
+				
+				local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
+				ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
+			end
+		end
+		ExpBuddyZoneNameEditBox:SetText("")
+		ExpBuddyZoneNameEditBox:ClearFocus()
+	else
+		local zoneName = addonTable.currentMap
+		for k,v in pairs(ExpBuddyDB) do
+			if string.find(string.lower(k), string.lower(zoneName)) then
+				ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
+				ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
+				ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
+				ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
+				ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
+				ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
+				
+				ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
+				ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
+				
+				local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
+				ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
+			end
+		end
+	end
+end
+
 function ExpBuddyShowMinimapIcon(show)
 	if show then
 		if icon ~= "" then
@@ -191,66 +254,7 @@ function ExpBuddyLoadMenu()
 			end)
 			
 			ExpBuddySearchButton:SetScript("OnClick", function(self)
-				-- First, set the texts to empty strings.
-				--
-				-- If nothing is found, then we'll get the
-				-- illusion of no results.
-				ExpBuddyZoneNameText:SetText("")
-				ExpBuddyQuestsExpText:SetText("")
-				ExpBuddyKillsExpText:SetText("")
-				ExpBuddyRestedExpText:SetText("")
-				ExpBuddyNodesExpText:SetText("")
-				ExpBuddyExplorationExpText:SetText("")
-				
-				ExpBuddyQuestsExpPctText:SetText("")
-				ExpBuddyKillsExpPctText:SetText("")
-				ExpBuddyNodesExpPctText:SetText("")
-				ExpBuddyExplorationExpPctText:SetText("")
-				
-				-- Ensure the zone name field has a value.
-				if ExpBuddyZoneNameEditBox:GetText() ~= "" then
-					local zoneName = ExpBuddyZoneNameEditBox:GetText()
-					for k,v in pairs(ExpBuddyDB) do
-						if string.find(string.lower(k), string.lower(zoneName)) then
-							ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
-							ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
-							ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
-							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
-							
-							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
-							
-							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
-							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
-						end
-					end
-					ExpBuddyZoneNameEditBox:SetText("")
-					ExpBuddyZoneNameEditBox:ClearFocus()
-				else
-					local zoneName = addonTable.currentMap
-					for k,v in pairs(ExpBuddyDB) do
-						if string.find(string.lower(k), string.lower(zoneName)) then
-							ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
-							ExpBuddyQuestsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Quests"]))
-							ExpBuddyKillsExpText:SetText(FormatNumber(ExpBuddyDB[k]["Kills"]))
-							ExpBuddyRestedExpText:SetText(FormatNumber(ExpBuddyDB[k]["Rested"]))
-							ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
-							ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
-							
-							ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
-							ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
-							
-							local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
-							ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
-						end
-					end
-				end
+				UpdateExperience()
 			end)
 		end
 	end

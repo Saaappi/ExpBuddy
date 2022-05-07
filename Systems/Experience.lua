@@ -43,7 +43,9 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- If Verbose is enabled, then print
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Kills]: " .. killsExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+			elseif ExpBuddyMenu:IsVisible() then
+				UpdateExperience()
 			end
 		elseif string.find(msg, "experience%.") then
 			-- The player looted a treasure, herb,
@@ -56,7 +58,9 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- If Verbose is enabled, then print
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Nodes]: " .. nodesExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+			elseif ExpBuddyMenu:IsVisible() then
+				UpdateExperience()
 			end
 		end
 	end
@@ -76,6 +80,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+			elseif ExpBuddyMenu:IsVisible() then
+				UpdateExperience()
 			end
 		end
 	end
@@ -104,7 +110,9 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- If Verbose is enabled, then print
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Quests]: " .. questsExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
+			elseif ExpBuddyMenu:IsVisible() then
+				UpdateExperience()
 			end
 		end)
 	end
