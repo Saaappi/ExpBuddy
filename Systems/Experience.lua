@@ -44,8 +44,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyMenu:IsVisible() then
-				UpdateExperience()
+			elseif ExpBuddyTrackerMenu:IsVisible() then
+				ExpBuddyUpdateExperience("ExpBuddyTracker")
 			end
 		elseif string.find(msg, "experience%.") then
 			-- The player looted a treasure, herb,
@@ -59,8 +59,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyMenu:IsVisible() then
-				UpdateExperience()
+			elseif ExpBuddyTrackerMenu:IsVisible() then
+				ExpBuddyUpdateExperience("ExpBuddyTracker")
 			end
 		end
 	end
@@ -80,8 +80,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyMenu:IsVisible() then
-				UpdateExperience()
+			elseif ExpBuddyTrackerMenu:IsVisible() then
+				ExpBuddyUpdateExperience("ExpBuddyTracker")
 			end
 		end
 	end
@@ -111,8 +111,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to the chat window.
 			if ExpBuddyOptionsDB.Verbose then
 				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyMenu:IsVisible() then
-				UpdateExperience()
+			elseif ExpBuddyTrackerMenu:IsVisible() then
+				ExpBuddyUpdateExperience("ExpBuddyTracker")
 			end
 		end)
 	end

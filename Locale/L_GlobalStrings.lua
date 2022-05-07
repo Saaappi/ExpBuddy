@@ -33,6 +33,7 @@ end
 
 if (isLocaleSupported) then
 	L_GLOBALSTRINGS["Slash EXP"]																= "/exp"
+	L_GLOBALSTRINGS["Tracker Command"]															= "tracker"
 	L_GLOBALSTRINGS["Colored Addon Name"]														= "|cff00FFFF"..addonName.."|r"
 end
 

@@ -1,0 +1,186 @@
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="SettingsFrame.lua" />
+	<Frame name="ExpBuddyTrackerMenu" inherits="BasicFrameTemplateWithInset" hidden="true" parent="UIParent" toplevel="true" frameStrata="HIGH">
+		<Size x="250" y="450" />
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent" x="0" y="200" />
+		</Anchors>
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_DIALOG_32_32" keyType="string" type="global" />
+		</KeyValues>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background-Dark" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize val="32" />
+			<EdgeSize val="32" />
+		</Backdrop>
+		<Frames>
+			<Button name="ExpBuddyTrackerMenuCloseButton" inherits="UIPanelButtonTemplate" hidden="true" text="X">
+				<Size x="24" y="24" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="ExpBuddyTrackerMenu" x="-2" y="-3" />
+				</Anchors>
+			</Button>
+		</Frames>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="ExpBuddyTrackerVersionText" inherits="GameFontNormal" text="1.0.0" justifyH="CENTER" justifyV="CENTER">
+					<Size x="80" y="20" />
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="ExpBuddyTrackerMenuCloseButton" relativePoint="RIGHT" x="-10" y="3" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerCopyrightText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="Crafted with |cffFF5C5C♥|r by LightskyGG" justifyH="CENTER" justifyV="CENTER">
+					<Size x="229" y="20" />
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="ExpBuddyTrackerVersionText" relativePoint="LEFT" x="40" y="1" />
+					</Anchors>
+					<FontHeight val="10" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerTitleText" inherits="GameFontNormal" font="Fonts\2002B.ttf" text="ExpBuddy" justifyH="CENTER" justifyV="CENTER">
+					<Size x="101" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerMenu" relativePoint="TOP" x="0" y="18" />
+					</Anchors>
+					<FontHeight val="15" />
+					<Color r="0" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerZoneNameText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="300" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerMenu" relativePoint="TOP" y="-40" />
+					</Anchors>
+					<FontHeight val="16" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<Texture name="ExpBuddyTrackerQuestsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerZoneNameText" relativePoint="CENTER" x="-75" y="-50" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyTrackerKillsIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerQuestsIcon" relativePoint="CENTER" y="-50" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyTrackerRestedExpIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerKillsIcon" relativePoint="CENTER" y="-50" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyTrackerExplorationIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerRestedExpIcon" relativePoint="CENTER" y="-50" />
+					</Anchors>
+				</Texture>
+				<Texture name="ExpBuddyTrackerNodesIcon" file="Interface\TARGETINGFRAME\UI-TargetingFrame-AttackBackground">
+					<Size x="24" y="24" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerExplorationIcon" relativePoint="BOTTOM" y="-50" />
+					</Anchors>
+				</Texture>
+				
+				<FontString name="ExpBuddyTrackerQuestsExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerQuestsIcon" relativePoint="RIGHT" x="40" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerQuestsExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerQuestsExpText" relativePoint="BOTTOM" y="-15" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerKillsExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerKillsIcon" relativePoint="RIGHT" x="40" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerKillsExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerKillsExpText" relativePoint="BOTTOM" y="-15" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerRestedExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerRestedExpIcon" relativePoint="RIGHT" x="40" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerExplorationExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerExplorationIcon" relativePoint="RIGHT" x="40" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerExplorationExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerExplorationExpText" relativePoint="BOTTOM" y="-15" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerNodesExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerNodesIcon" relativePoint="RIGHT" x="40" />
+					</Anchors>
+					<FontHeight val="14" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerNodesExpPctText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="100" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerNodesExpText" relativePoint="BOTTOM" y="-15" />
+					</Anchors>
+					<FontHeight val="12" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+				<FontString name="ExpBuddyTrackerTotalExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
+					<Size x="300" y="20" />
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerZoneNameText" relativePoint="BOTTOM" y="-100" />
+					</Anchors>
+					<FontHeight val="16" />
+					<Color r="1" g="1" b="1" />
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				tinsert(UISpecialFrames, self:GetName())
+			</OnLoad>
+			<OnShow>
+				PlaySound(SOUNDKIT.IG_SPELLBOOK_OPEN)
+			</OnShow>
+			<OnHide>
+				PlaySound(SOUNDKIT.IG_SPELLBOOK_CLOSE)
+			</OnHide>
+		</Scripts>
+	</Frame>
+	<GameTooltip inherits="GameTooltipTemplate" />
+</Ui>

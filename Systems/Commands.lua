@@ -11,5 +11,11 @@ SlashCmdList["ExpBuddy"] = function(command, editbox)
 		else
 			ExpBuddyLoadMenu()
 		end
+	elseif command == L_GLOBALSTRINGS["Tracker Command"] then
+		if ExpBuddyTrackerMenu:IsVisible() then
+			ExpBuddyTrackerMenu:Hide()
+		else
+			ExpBuddyTrackerLoad()
+		end
 	end
 end
