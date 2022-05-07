@@ -60,13 +60,13 @@ function ExpBuddyUpdateExperience(frame)
 				ExpBuddyNodesExpText:SetText(FormatNumber(ExpBuddyDB[k]["Nodes"]))
 				ExpBuddyExplorationExpText:SetText(FormatNumber(ExpBuddyDB[k]["Exploration"]))
 				
-				ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
-				ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyPctDB[k]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
-				ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyPctDB[k]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
-				ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyPctDB[k]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
-				
 				local totalExp = ExpBuddyDB[k]["Quests"] + ExpBuddyDB[k]["Kills"] + ExpBuddyDB[k]["Nodes"] + ExpBuddyDB[k]["Exploration"]
 				ExpBuddyTotalExpText:SetText(FormatNumber(totalExp))
+				
+				ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyDB[k]["Quests"]/totalExp), 3)*100 .. "%")
+				ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyDB[k]["Kills"]/totalExp), 3)*100 .. "%")
+				ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyDB[k]["Nodes"]/totalExp), 3)*100 .. "%")
+				ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyDB[k]["Exploration"]/totalExp), 3)*100 .. "%")
 			end
 		end
 	else
@@ -94,13 +94,13 @@ function ExpBuddyUpdateExperience(frame)
 			ExpBuddyTrackerNodesExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Nodes"]))
 			ExpBuddyTrackerExplorationExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Exploration"]))
 			
-			ExpBuddyTrackerQuestsExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerKillsExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerNodesExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerExplorationExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
-			
 			local totalExp = ExpBuddyDB[addonTable.currentMap]["Quests"] + ExpBuddyDB[addonTable.currentMap]["Kills"] + ExpBuddyDB[addonTable.currentMap]["Nodes"] + ExpBuddyDB[addonTable.currentMap]["Exploration"]
 			ExpBuddyTrackerTotalExpText:SetText(FormatNumber(totalExp))
+			
+			ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyDB[k]["Quests"]/totalExp), 3)*100 .. "%")
+			ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyDB[k]["Kills"]/totalExp), 3)*100 .. "%")
+			ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyDB[k]["Nodes"]/totalExp), 3)*100 .. "%")
+			ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyDB[k]["Exploration"]/totalExp), 3)*100 .. "%")
 		end
 	end
 end
@@ -178,13 +178,13 @@ function ExpBuddyTrackerLoad()
 			ExpBuddyTrackerNodesExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Nodes"]))
 			ExpBuddyTrackerExplorationExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Exploration"]))
 			
-			ExpBuddyTrackerQuestsExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Quests"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerKillsExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Kills"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerNodesExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Nodes"]/UnitXPMax("player")), 3)*100 .. "%")
-			ExpBuddyTrackerExplorationExpPctText:SetText(Round((ExpBuddyPctDB[addonTable.currentMap]["Exploration"]/UnitXPMax("player")), 3)*100 .. "%")
-			
 			local totalExp = ExpBuddyDB[addonTable.currentMap]["Quests"] + ExpBuddyDB[addonTable.currentMap]["Kills"] + ExpBuddyDB[addonTable.currentMap]["Nodes"] + ExpBuddyDB[addonTable.currentMap]["Exploration"]
 			ExpBuddyTrackerTotalExpText:SetText(FormatNumber(totalExp))
+			
+			ExpBuddyTrackerQuestsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Quests"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerKillsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Kills"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerNodesExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Nodes"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerExplorationExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Exploration"]/totalExp), 3)*100 .. "%")
 		end
 	end
 end
