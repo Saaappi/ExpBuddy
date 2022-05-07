@@ -231,7 +231,7 @@ function ExpBuddyLoadMenu()
 					ExpBuddyZoneNameEditBox:SetText("")
 					ExpBuddyZoneNameEditBox:ClearFocus()
 				else
-					local zoneName = C_Map.GetMapInfo(C_Map.GetBestMapForUnit("player")).name
+					local zoneName = addonTable.currentMap
 					for k,v in pairs(ExpBuddyDB) do
 						if string.find(string.lower(k), string.lower(zoneName)) then
 							ExpBuddyZoneNameText:SetText("|cffFED55F" .. k .. "|r")
