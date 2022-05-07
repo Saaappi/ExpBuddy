@@ -1,5 +1,8 @@
 <Bindings>
-	<Binding name="EXPBUDDY_OPEN_MENU" header="EXPBUDDY" category="ADDONS">
+	<Binding name="EXPBUDDY_OPEN_MENU" header="EXPBUDDY" category="|cff00FFFFExpBuddy|r">
 		ExpBuddyKeyPressHandler(GetBindingKey("EXPBUDDY_OPEN_MENU"))
+	</Binding>
+	<Binding name="EXPBUDDY_OPEN_TRACKER" category="|cff00FFFFExpBuddy|r">
+		ExpBuddyKeyPressHandler(GetBindingKey("EXPBUDDY_OPEN_TRACKER"))
 	</Binding>
 </Bindings>
