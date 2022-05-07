@@ -163,7 +163,7 @@
 				<FontString name="ExpBuddyTrackerTotalExpText" inherits="GameFontNormal" font="Fonts\2002.ttf" text="" justifyH="CENTER" justifyV="CENTER">
 					<Size x="300" y="20" />
 					<Anchors>
-						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerZoneNameText" relativePoint="BOTTOM" y="-100" />
+						<Anchor point="CENTER" relativeTo="ExpBuddyTrackerZoneNameText" relativePoint="BOTTOM" y="-350" />
 					</Anchors>
 					<FontHeight val="16" />
 					<Color r="1" g="1" b="1" />
