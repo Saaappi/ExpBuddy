@@ -71,22 +71,6 @@ function ExpBuddyUpdateExperience(frame)
 		end
 	else
 		if ExpBuddyTrackerMenu:IsVisible() then
-			-- First, set the texts to empty strings.
-			--
-			-- If nothing is found, then we'll get the
-			-- illusion of no results.
-			ExpBuddyTrackerZoneNameText:SetText("")
-			ExpBuddyTrackerQuestsExpText:SetText("")
-			ExpBuddyTrackerKillsExpText:SetText("")
-			ExpBuddyTrackerRestedExpText:SetText("")
-			ExpBuddyTrackerNodesExpText:SetText("")
-			ExpBuddyTrackerExplorationExpText:SetText("")
-			
-			ExpBuddyTrackerQuestsExpPctText:SetText("")
-			ExpBuddyTrackerKillsExpPctText:SetText("")
-			ExpBuddyTrackerNodesExpPctText:SetText("")
-			ExpBuddyTrackerExplorationExpPctText:SetText("")
-
 			ExpBuddyTrackerZoneNameText:SetText("|cffFED55F" .. addonTable.currentMap .. "|r")
 			ExpBuddyTrackerQuestsExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Quests"]))
 			ExpBuddyTrackerKillsExpText:SetText(FormatNumber(ExpBuddyDB[addonTable.currentMap]["Kills"]))
@@ -97,10 +81,10 @@ function ExpBuddyUpdateExperience(frame)
 			local totalExp = ExpBuddyDB[addonTable.currentMap]["Quests"] + ExpBuddyDB[addonTable.currentMap]["Kills"] + ExpBuddyDB[addonTable.currentMap]["Nodes"] + ExpBuddyDB[addonTable.currentMap]["Exploration"]
 			ExpBuddyTrackerTotalExpText:SetText(FormatNumber(totalExp))
 			
-			ExpBuddyQuestsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Quests"]/totalExp), 3)*100 .. "%")
-			ExpBuddyKillsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Kills"]/totalExp), 3)*100 .. "%")
-			ExpBuddyNodesExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Nodes"]/totalExp), 3)*100 .. "%")
-			ExpBuddyExplorationExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Exploration"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerQuestsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Quests"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerKillsExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Kills"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerNodesExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Nodes"]/totalExp), 3)*100 .. "%")
+			ExpBuddyTrackerExplorationExpPctText:SetText(Round((ExpBuddyDB[addonTable.currentMap]["Exploration"]/totalExp), 3)*100 .. "%")
 		end
 	end
 end
