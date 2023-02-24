@@ -47,7 +47,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			frame:SetStatusText(GetAddOnMetadata(addonName, "Version"))
 			frame:SetLayout("List")
 			frame:EnableResize(false)
-			frame:SetWidth(200)
+			frame:SetWidth(215)
 			frame:SetHeight(350)
 			
 			-- Get all the labels' data.
@@ -150,18 +150,28 @@ function ExpBuddy:SlashCommandHandler(cmd)
 	elseif cmd == "search" and arg1 ~= nil then
 		local str = string.lower(arg1)
 		for name, data in pairs(ExpBuddyDataDB) do
-			if string.find(string.lower(name), str) then
-				local labels = addonTable.GetData()
-				-- We have a zone name match, so print the data!
+			if str == "*" then
+				-- Return every map's data.
 				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
-					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(labels.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Monsters) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(labels.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Rested) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(labels.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Quests) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(labels.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Nodes) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(labels.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Exploration) .. "%)|r" .. "\n"
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Monsters) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Rested) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Quests) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Nodes) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Exploration) .. "%)|r" .. "\n"
+				)
+			elseif string.find(string.lower(name), str) then
+				-- We have a match, so print the data!
+				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Monsters) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Rested) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Quests) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Nodes) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Exploration) .. "%)|r" .. "\n"
 				)
 			end
 		end
+	elseif cmd == "position" then
+		print(frame:GetPoint())
 	end
 end
 
