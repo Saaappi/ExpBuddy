@@ -110,11 +110,11 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			if string.find(string.lower(name), str) then
 				-- We have a zone name match, so print the data!
 				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
-					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)" .. "\n" ..
-					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)" .. "\n" ..
-					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)" .. "\n" ..
-					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)" .. "\n"
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)|r" .. "\n"
 				)
 			end
 		end
