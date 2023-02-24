@@ -18,34 +18,33 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		frame:EnableResize(false)
 		frame:SetWidth(200)
 		frame:SetHeight(300)
-		--tinsert(UISpecialFrames, "ExpBuddyTrackerFrame")
 		
 		-- Monsters Label
-		local monstersXP = addonTable.FormatNumber(tostring(ExpBuddyDB[addonTable.currentMap]["Monsters"]))
+		local monstersXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]))
 		addonTable.monstersLabel = AceGUI:Create("Label")
 		addonTable.monstersLabel:SetText(CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP)
 		frame:AddChild(addonTable.monstersLabel)
 		
 		-- Rested XP Label
-		local restedXP = addonTable.FormatNumber(tostring(ExpBuddyDB[addonTable.currentMap]["Rested"]))
+		local restedXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"]))
 		addonTable.restedLabel = AceGUI:Create("Label")
 		addonTable.restedLabel:SetText("\n |T136090:0|t" .. " |cffFFD100" .. "Rested|r: " .. restedXP)
 		frame:AddChild(addonTable.restedLabel)
 		
 		-- Quests Label
-		local questsXP = addonTable.FormatNumber(tostring(ExpBuddyDB[addonTable.currentMap]["Quests"]))
+		local questsXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"]))
 		addonTable.questsLabel = AceGUI:Create("Label")
 		addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. questsXP)
 		frame:AddChild(addonTable.questsLabel)
 		
 		-- Nodes Label
-		local nodesXP = addonTable.FormatNumber(tostring(ExpBuddyDB[addonTable.currentMap]["Nodes"]))
+		local nodesXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]))
 		addonTable.nodesLabel = AceGUI:Create("Label")
 		addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. nodesXP)
 		frame:AddChild(addonTable.nodesLabel)
 		
 		-- Exploration Label
-		local explorationXP = addonTable.FormatNumber(tostring(ExpBuddyDB[addonTable.currentMap]["Exploration"]))
+		local explorationXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]))
 		addonTable.explorationLabel = AceGUI:Create("Label")
 		addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP)
 		frame:AddChild(addonTable.explorationLabel)
@@ -57,13 +56,13 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		entryLevelEditbox:SetWidth(75)
 		entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
-				ExpBuddyDB[addonTable.currentMap]["EntryLevel"] = tonumber(text)
+				ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = tonumber(text)
 			else
 				print("Please input a number.")
 				entryLevelEditbox:SetText("")
 			end
 		end)
-		entryLevelEditbox:SetText(ExpBuddyDB[addonTable.currentMap]["EntryLevel"])
+		entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"])
 		frame:AddChild(entryLevelEditbox)
 		
 		-- Exit Level Editbox
@@ -72,13 +71,13 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		exitLevelEditbox:SetWidth(75)
 		exitLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
-				ExpBuddyDB[addonTable.currentMap]["ExitLevel"] = tonumber(text)
+				ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = tonumber(text)
 			else
 				print("Please input a number.")
 				exitLevelEditbox:SetText("")
 			end
 		end)
-		entryLevelEditbox:SetText(ExpBuddyDB[addonTable.currentMap]["ExitLevel"])
+		entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
 		frame:AddChild(exitLevelEditbox)
 	end
 end

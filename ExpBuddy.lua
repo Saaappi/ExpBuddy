@@ -48,8 +48,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 				
 				-- If the primary experience table is nil, then
 				-- set it to an empty table.
-				if ExpBuddyDB == nil then
-					ExpBuddyDB = {}
+				if ExpBuddyDataDB == nil then
+					ExpBuddyDataDB = {}
 				end
 				
 				-- If the player's current zone isn't in the
@@ -58,15 +58,15 @@ e:SetScript("OnEvent", function(self, event, ...)
 				-- If the player's current zone isn't in the
 				-- table, then none of the subtables will be
 				-- either.
-				if ExpBuddyDB[addonTable.currentMap] == nil then
-					ExpBuddyDB[addonTable.currentMap] = {}
-					ExpBuddyDB[addonTable.currentMap]["Quests"] = 0
-					ExpBuddyDB[addonTable.currentMap]["Monsters"] = 0
-					ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
-					ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
-					ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
-					ExpBuddyDB[addonTable.currentMap]["EntryLevel"] = 0
-					ExpBuddyDB[addonTable.currentMap]["ExitLevel"] = 0
+				if ExpBuddyDataDB[addonTable.currentMap] == nil then
+					ExpBuddyDataDB[addonTable.currentMap] = {}
+					ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = 0
 				end
 			end)
 			
