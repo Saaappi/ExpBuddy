@@ -16,7 +16,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		frame:SetLayout("List")
 		frame:EnableResize(false)
 		frame:SetWidth(200)
-		frame:SetHeight(300)
+		frame:SetHeight(350)
 		
 		-- All widgets are created in Data\Constants.lua.
 		-- Current Zone Label
@@ -75,6 +75,35 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		end)
 		addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
 		frame:AddChild(addonTable.exitLevelEditbox)
+		
+		-- Reset Button
+		addonTable.resetButton:SetText("Reset")
+		addonTable.resetButton:SetWidth(100)
+		addonTable.resetButton:SetCallback("OnClick", function(widget, event, text)
+			StaticPopupDialogs["EXPBUDDY_ACK_RESET"] = {
+				text = "Are you sure you want to reset the data for |cffFFD100" .. addonTable.currentMap .. "|r?",
+				button1 = YES,
+				button2 = CANCEL,
+				OnAccept = function(self, data)
+					-- Reset zone data to 0
+					ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
+					ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+					
+					-- Update labels
+					addonTable.ResetLabels()
+				end,
+				showAlert = true,
+				whileDead = false,
+				hideOnEscape = true,
+				enterClicksFirstButton = true,
+				preferredIndex = 3,
+			}
+			StaticPopup_Show("EXPBUDDY_ACK_RESET")
+		end)
+		frame:AddChild(addonTable.resetButton)
 	end
 end
 
