@@ -75,7 +75,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				exitLevelEditbox:SetText("")
 			end
 		end)
-		entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
+		exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
 		frame:AddChild(exitLevelEditbox)
 	end
 end
