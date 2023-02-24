@@ -31,6 +31,21 @@ addonTable.Substring = function(str)
 	end
 end
 
+addonTable.CalculatePercent = function(cat)
+	local monsters = ExpBuddyDataDB[addonTable.currentMap]["Monsters"]
+	local rested = ExpBuddyDataDB[addonTable.currentMap]["Rested"]
+	local quests = ExpBuddyDataDB[addonTable.currentMap]["Quests"]
+	local nodes = ExpBuddyDataDB[addonTable.currentMap]["Nodes"]
+	local exploration = ExpBuddyDataDB[addonTable.currentMap]["Exploration"]
+	
+	local multiplier = 10^(2 or 0)
+	if (monsters+rested+quests+nodes+exploration) == 0 then
+		return 0.00
+	else
+		return math.floor((cat/(monsters+rested+quests+nodes+exploration)) * multiplier + 0.5) / multiplier
+	end
+end
+
 addonTable.ResetLabels = function()
 	addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"])))
 	addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"])))

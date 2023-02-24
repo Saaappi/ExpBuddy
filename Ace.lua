@@ -25,27 +25,27 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		
 		-- Monsters Label
 		local monstersXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]))
-		addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP)
+		addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
 		frame:AddChild(addonTable.monstersLabel)
 		
 		-- Rested XP Label
 		local restedXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"]))
-		addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. restedXP)
+		addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. restedXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)")
 		frame:AddChild(addonTable.restedLabel)
 		
 		-- Quests Label
 		local questsXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"]))
-		addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. questsXP)
+		addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. questsXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)")
 		frame:AddChild(addonTable.questsLabel)
 		
 		-- Nodes Label
 		local nodesXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]))
-		addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. nodesXP)
+		addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. nodesXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)")
 		frame:AddChild(addonTable.nodesLabel)
 		
 		-- Exploration Label
 		local explorationXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]))
-		addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP)
+		addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)")
 		frame:AddChild(addonTable.explorationLabel)
 		
 		-- Entry Level Editbox

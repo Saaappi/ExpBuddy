@@ -26,7 +26,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local nodeXP = tonumber(FindNumber(msg, 1))
 			experience = experience + nodeXP
 			ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = experience
-			addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(experience)))
+			addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)")
 		end
 	end
 end)
