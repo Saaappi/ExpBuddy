@@ -57,12 +57,13 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		entryLevelEditbox:SetWidth(75)
 		entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
-				ExpBuddy[addonTable.currentMap]["EntryLevel"] = tonumber(text)
+				ExpBuddyDB[addonTable.currentMap]["EntryLevel"] = tonumber(text)
 			else
 				print("Please input a number.")
 				entryLevelEditbox:SetText("")
 			end
 		end)
+		entryLevelEditbox:SetText(ExpBuddyDB[addonTable.currentMap]["EntryLevel"])
 		frame:AddChild(entryLevelEditbox)
 		
 		-- Exit Level Editbox
@@ -71,12 +72,13 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		exitLevelEditbox:SetWidth(75)
 		exitLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
-				ExpBuddy[addonTable.currentMap]["ExitLevel"] = tonumber(text)
+				ExpBuddyDB[addonTable.currentMap]["ExitLevel"] = tonumber(text)
 			else
 				print("Please input a number.")
 				exitLevelEditbox:SetText("")
 			end
 		end)
+		entryLevelEditbox:SetText(ExpBuddyDB[addonTable.currentMap]["ExitLevel"])
 		frame:AddChild(exitLevelEditbox)
 	end
 end
