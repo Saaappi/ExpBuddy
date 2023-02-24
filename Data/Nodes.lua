@@ -17,7 +17,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 		if addonTable.playerLevel == maxLevel then return end
 		
 		local msg = ...
-		if string.find(msg, "experience%.") then
+		if string.find(msg, "experience%.") and not string.find(msg, "dies") then
 			-- The player looted a node for some experience, so
 			-- let's add it to the Nodes experience for the current
 			-- map.
