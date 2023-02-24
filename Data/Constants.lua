@@ -1,16 +1,4 @@
 local addonName, addonTable = ...
-local AceGUI = LibStub("AceGUI-3.0")
-
--- AceGUI Widgets
-addonTable.currentMapLabel = AceGUI:Create("Label")
-addonTable.monstersLabel = AceGUI:Create("Label")
-addonTable.restedLabel = AceGUI:Create("Label")
-addonTable.questsLabel = AceGUI:Create("Label")
-addonTable.nodesLabel = AceGUI:Create("Label")
-addonTable.explorationLabel = AceGUI:Create("Label")
-addonTable.entryLevelEditbox = AceGUI:Create("EditBox")
-addonTable.exitLevelEditbox = AceGUI:Create("EditBox")
-addonTable.resetButton = AceGUI:Create("Button")
 
 addonTable.FormatNumber = function(number)
 	local formattedNumber = number
