@@ -28,7 +28,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		frame:SetLayout("List")
 		frame:EnableResize(false)
 		frame:SetWidth(200)
-		frame:SetHeight(250)
+		frame:SetHeight(300)
 		--tinsert(UISpecialFrames, "ExpBuddyTrackerFrame")
 		
 		-- Monsters Label
@@ -63,11 +63,15 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		
 		-- Entry Level Editbox
 		local entryLevelEditbox = AceGUI:Create("EditBox")
+		_G["ExpBuddyEntryLevelEditbox"] = entryLevelEditbox
 		entryLevelEditbox:SetLabel("Entry Level")
 		entryLevelEditbox:SetWidth(75)
 		entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
 				ExpBuddy[addonTable.currentMap]["EntryLevel"] = tonumber(text)
+			else
+				print("Please input a number.")
+				entryLevelEditbox:SetText("")
 			end
 		end)
 		frame:AddChild(entryLevelEditbox)
@@ -79,6 +83,9 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		exitLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 			if tonumber(text) then
 				ExpBuddy[addonTable.currentMap]["ExitLevel"] = tonumber(text)
+			else
+				print("Please input a number.")
+				exitLevelEditbox:SetText("")
 			end
 		end)
 		frame:AddChild(exitLevelEditbox)
