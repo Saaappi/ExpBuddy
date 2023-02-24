@@ -10,7 +10,6 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		Settings.OpenToCategory(addonName)
 	elseif cmd == "tracker" then
 		local frame = AceGUI:Create("Frame")
-		_G["ExpBuddyTrackerFrame"] = frame.frame
 		frame:SetCallback("OnClose", function(widget) AceGUI:Release(widget) end)
 		frame:SetTitle("ExpBuddy")
 		frame:SetStatusText(GetAddOnMetadata(addonName, "Version"))
@@ -51,7 +50,6 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		
 		-- Entry Level Editbox
 		local entryLevelEditbox = AceGUI:Create("EditBox")
-		_G["ExpBuddyEntryLevelEditbox"] = entryLevelEditbox
 		entryLevelEditbox:SetLabel("Entry Level")
 		entryLevelEditbox:SetWidth(75)
 		entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
