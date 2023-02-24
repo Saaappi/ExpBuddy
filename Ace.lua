@@ -90,7 +90,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				if tonumber(text) then
 					ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = tonumber(text)
 				else
-					print("Please input a number.")
+					print(addonTable.data["COLORED_ADDON_NAME"] .. ": Please input a number.")
 					addonTable.entryLevelEditbox:SetText("")
 				end
 			end)
@@ -104,7 +104,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				if tonumber(text) then
 					ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = tonumber(text)
 				else
-					print("Please input a number.")
+					print(addonTable.data["COLORED_ADDON_NAME"] .. ": Please input a number.")
 					addonTable.exitLevelEditbox:SetText("")
 				end
 			end)
@@ -115,30 +115,35 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			addonTable.resetButton:SetText("Reset")
 			addonTable.resetButton:SetWidth(100)
 			addonTable.resetButton:SetCallback("OnClick", function(widget, event, text)
-				StaticPopupDialogs["EXPBUDDY_ACK_RESET"] = {
-					text = "Are you sure you want to reset the data for |cffFFD100" .. addonTable.currentMap .. "|r?",
-					button1 = YES,
-					button2 = CANCEL,
-					OnAccept = function(self, data)
-						-- Reset zone data to 0
-						ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = 0
-						ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = 0
-						
-						-- Update labels
-						addonTable.ResetLabels()
-					end,
-					showAlert = true,
-					whileDead = false,
-					hideOnEscape = true,
-					enterClicksFirstButton = true,
-					preferredIndex = 3,
-				}
-				StaticPopup_Show("EXPBUDDY_ACK_RESET")
+				local labels = addonTable.GetData()
+				if (labels.Monsters+labels.Rested+labels.Quests+labels.Nodes+labels.Exploration) == 0 then
+					print(addonTable.data["COLORED_ADDON_NAME"] .. ": This zone doesn't have any data to reset.")
+				else
+					StaticPopupDialogs["EXPBUDDY_ACK_RESET"] = {
+						text = "Are you sure you want to reset the data for |cffFFD100" .. addonTable.currentMap .. "|r?",
+						button1 = YES,
+						button2 = CANCEL,
+						OnAccept = function(self, data)
+							-- Reset zone data to 0
+							ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = 0
+							ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = 0
+							
+							-- Update labels
+							addonTable.ResetLabels()
+						end,
+						showAlert = true,
+						whileDead = false,
+						hideOnEscape = true,
+						enterClicksFirstButton = true,
+						preferredIndex = 3,
+					}
+					StaticPopup_Show("EXPBUDDY_ACK_RESET")
+				end
 			end)
 			frame:AddChild(addonTable.resetButton)
 		else
