@@ -18,10 +18,15 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		frame:SetWidth(200)
 		frame:SetHeight(300)
 		
+		-- Current Zone Label
+		addonTable.currentMapLabel = AceGUI:Create("Label")
+		addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. string.sub(addonTable.currentMap, 1, 15) .. "...")
+		frame:AddChild(addonTable.currentMapLabel)
+		
 		-- Monsters Label
 		local monstersXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]))
 		addonTable.monstersLabel = AceGUI:Create("Label")
-		addonTable.monstersLabel:SetText(CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP)
+		addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP)
 		frame:AddChild(addonTable.monstersLabel)
 		
 		-- Rested XP Label

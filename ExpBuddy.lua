@@ -9,6 +9,7 @@ local function GetCurrentZone()
 			-- Only update the map if it's a zone or dungeon.
 			if map.mapType == 3 or map.mapType == 4 then
 				addonTable.currentMap = map.name
+				addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. string.sub(addonTable.currentMap, 1, 15) .. "...")
 			elseif map.mapType == 5 or map.mapType == 6 then
 				-- Use the parent map because these current map
 				-- is either a micro or orphan part of a parenting
@@ -16,6 +17,7 @@ local function GetCurrentZone()
 				map = C_Map.GetMapInfo(map.parentMapID)
 				if map then
 					addonTable.currentMap = map.name
+					addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. string.sub(addonTable.currentMap, 1, 15) .. "...")
 				end
 			end
 		end
