@@ -30,7 +30,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		
 		-- Rested XP Label
 		local restedXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"]))
-		addonTable.restedLabel:SetText("\n |T136090:0|t" .. " |cffFFD100" .. "Rested|r: " .. restedXP)
+		addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. restedXP)
 		frame:AddChild(addonTable.restedLabel)
 		
 		-- Quests Label

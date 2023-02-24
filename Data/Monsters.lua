@@ -38,7 +38,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 				local restedXP = tonumber(FindNumber(msg, 2))
 				experience = experience + restedXP
 				ExpBuddyDataDB[addonTable.currentMap]["Rested"] = experience
-				addonTable.restedLabel:SetText("\n |T136090:0|t" .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(experience)))
+				addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(experience)))
 			end
 		end
 	end
