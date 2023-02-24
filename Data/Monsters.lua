@@ -19,34 +19,27 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- The player defeated a monster for some experience, so
 			-- let's add it to the Monsters experience for the current
 			-- map.
-			local experience = ExpBuddyDB[addonTable.currentMap]["Monsters"]
+			local experience = ExpBuddyDataDB[addonTable.currentMap]["Monsters"]
 			local monsterXP = tonumber(FindNumber(msg, 1))
 			experience = experience + monsterXP
-			ExpBuddyDB[addonTable.currentMap]["Monsters"] = experience
-			ExpBuddyPctDB[addonTable.currentMap]["Monsters"] = ExpBuddyPctDB[addonTable.currentMap]["Monsters"] + monsterXP
+			ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = experience
+			addonTable.monstersLabel:SetText(CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(experience)))
 			
 			-- If the player has rested experience, then let's track
 			-- how much experience was earned from the monster while
 			-- rested.
 			if GetXPExhaustion() then
 				-- In case the value doesn't exist in the table.
-				if ExpBuddyDB[addonTable.currentMap]["Rested"] == nil then
-					ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
+				if ExpBuddyDataDB[addonTable.currentMap]["Rested"] == nil then
+					ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
 				end
 				
-				local experience = ExpBuddyDB[addonTable.currentMap]["Rested"]
+				local experience = ExpBuddyDataDB[addonTable.currentMap]["Rested"]
 				local restedXP = tonumber(FindNumber(msg, 2))
 				experience = experience + restedXP
-				ExpBuddyDB[addonTable.currentMap]["Rested"] = experience
+				ExpBuddyDataDB[addonTable.currentMap]["Rested"] = experience
+				addonTable.restedLabel:SetText("\n |T136090:0|t" .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(experience)))
 			end
-			
-			-- TODO: This should be stored silently unless the GUI is
-			-- shown.
-			--[[if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyTrackerMenu:IsVisible() then
-				ExpBuddyUpdateExperience("ExpBuddyTracker")
-			end]]
 		end
 	end
 end)

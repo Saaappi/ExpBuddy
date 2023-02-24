@@ -13,10 +13,10 @@ e:SetScript("OnEvent", function(self, event, ...)
 				-- The player completed a quest for some experience, so
 				-- let's add it to the Quests experience for the current
 				-- map.
-				experience = ExpBuddyDB[addonTable.currentMap]["Quests"]
+				experience = ExpBuddyDataDB[addonTable.currentMap]["Quests"]
 				experience = experience + questXP
-				ExpBuddyDB[addonTable.currentMap]["Quests"] = experience
-				ExpBuddyPctDB[addonTable.currentMap]["Quests"] = ExpBuddyPctDB[addonTable.currentMap]["Quests"] + questXP
+				ExpBuddyDataDB[addonTable.currentMap]["Quests"] = experience
+				addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(experience)))
 			end
 			
 			-- This event will also add to the Nodes category, but we can
@@ -24,9 +24,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- to remove the false positive.
 			if ExpBuddyDB[addonTable.currentMap]["Nodes"] ~= 0 then
 				ExpBuddyDB[addonTable.currentMap]["Nodes"] = ExpBuddyDB[addonTable.currentMap]["Nodes"] - questXP
-			end
-			if ExpBuddyPctDB[addonTable.currentMap]["Nodes"] ~= 0 then
-				ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = ExpBuddyPctDB[addonTable.currentMap]["Nodes"] - questXP
 			end
 			
 			-- TODO: This should be stored silently unless the GUI is
