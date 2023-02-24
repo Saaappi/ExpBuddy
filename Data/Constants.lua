@@ -54,6 +54,8 @@ addonTable.ResetLabels = function()
 	addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(labels.Quests)) .. " (" .. addonTable.CalculatePercent(labels.Quests) .. "%)")
 	addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(labels.Nodes)) .. " (" .. addonTable.CalculatePercent(labels.Nodes) .. "%)")
 	addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(labels.Exploration)) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
+	addonTable.entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"])
+	addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
 end
 
 local data = {
