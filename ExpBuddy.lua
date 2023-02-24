@@ -51,9 +51,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 				if ExpBuddyDB == nil then
 					ExpBuddyDB = {}
 				end
-				if ExpBuddyPctDB == nil then
-					ExpBuddyPctDB = {}
-				end
 				
 				-- If the player's current zone isn't in the
 				-- table, then add it.
@@ -68,20 +65,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyDB[addonTable.currentMap]["Rested"] = 0
 					ExpBuddyDB[addonTable.currentMap]["Nodes"] = 0
 					ExpBuddyDB[addonTable.currentMap]["Exploration"] = 0
-				end
-				
-				-- If the player's current zone isn't in the
-				-- table, then add it.
-				--
-				-- If the player's current zone isn't in the
-				-- table, then none of the subtables will be
-				-- either.
-				if ExpBuddyPctDB[addonTable.currentMap] == nil then
-					ExpBuddyPctDB[addonTable.currentMap] = {}
-					ExpBuddyPctDB[addonTable.currentMap]["Quests"] = 0
-					ExpBuddyPctDB[addonTable.currentMap]["Monsters"] = 0
-					ExpBuddyPctDB[addonTable.currentMap]["Nodes"] = 0
-					ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = 0
+					ExpBuddyDB[addonTable.currentMap]["EntryLevel"] = 0
+					ExpBuddyDB[addonTable.currentMap]["ExitLevel"] = 0
 				end
 			end)
 			
@@ -92,16 +77,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 	if event == "PLAYER_LEVEL_UP" then
 		local level = ...
 		addonTable.playerLevel = level
-		
-		-- Reset all the percentage values back to
-		-- 0 once the player levels up.
-		C_Timer.After(1, function()
-			for k, _ in pairs(ExpBuddyPctDB) do
-				for i, _ in pairs(ExpBuddyPctDB[k]) do
-					ExpBuddyPctDB[k][i] = 0
-				end
-			end
-		end)
 	end
 	
 	if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then

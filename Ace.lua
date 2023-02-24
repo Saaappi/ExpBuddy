@@ -28,7 +28,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		frame:SetLayout("List")
 		frame:EnableResize(false)
 		frame:SetWidth(200)
-		frame:SetHeight(200)
+		frame:SetHeight(250)
 		--tinsert(UISpecialFrames, "ExpBuddyTrackerFrame")
 		
 		-- Monsters Label
@@ -60,6 +60,18 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		local explorationLabel = AceGUI:Create("Label")
 		explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP)
 		frame:AddChild(explorationLabel)
+		
+		-- Entry Level Editbox
+		local entryLevelEditbox = AceGUI:Create("EditBox")
+		entryLevelEditbox:SetLabel("Entry Level")
+		entryLevelEditbox:SetWidth(75)
+		frame:AddChild(entryLevelEditbox)
+		
+		-- Exit Level Editbox
+		local exitLevelEditbox = AceGUI:Create("EditBox")
+		exitLevelEditbox:SetLabel("Exit Level")
+		exitLevelEditbox:SetWidth(75)
+		frame:AddChild(exitLevelEditbox)
 	end
 end
 
