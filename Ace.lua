@@ -150,28 +150,33 @@ function ExpBuddy:SlashCommandHandler(cmd)
 	elseif cmd == "search" and arg1 ~= nil then
 		-- Make a local variable and copy the saved variable to it. We want
 		-- the temporary table to sort by map name alphabetically.
-		local maps = ExpBuddyDataDB
-		table.sort(maps, function(a, b) return string.lower(a) < string.lower(b) end)
+		local maps = {}
+		for k, v in pairs(ExpBuddyDataDB) do
+			table.insert(maps, { ["name"] = k, ["map"] = v })
+		end
+		table.sort(maps, function(a, b)
+			return string.lower(a.name) < string.lower(b.name)
+		end)
 		
 		local str = string.lower(arg1)
-		for name, data in pairs(maps) do
+		for _, data in ipairs(maps) do
 			if str == "*" then
 				-- Return every map's data.
-				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
-					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Monsters) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Rested) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Quests) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Nodes) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Exploration) .. "%)|r" .. "\n"
+				print("|cffFFD100" .. data.name .. "|r:" .. "\n" ..
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.map.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Monsters) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.map.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Rested) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.map.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Quests) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.map.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Nodes) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r" .. "\n"
 				)
-			elseif string.find(string.lower(name), str) then
+			elseif string.find(string.lower(data.name), str) then
 				-- We have a match, so print the data!
-				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
-					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Monsters) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Rested) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Quests) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Nodes) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.Exploration) .. "%)|r" .. "\n"
+				print("|cffFFD100" .. data.name .. "|r:" .. "\n" ..
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(data.map.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Monsters) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.map.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Rested) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.map.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Quests) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.map.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Nodes) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r" .. "\n"
 				)
 			end
 		end
