@@ -148,8 +148,13 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			AceGUI:Release(frame)
 		end
 	elseif cmd == "search" and arg1 ~= nil then
+		-- Make a local variable and copy the saved variable to it. We want
+		-- the temporary table to sort by map name alphabetically.
+		local maps = ExpBuddyDataDB
+		table.sort(maps, function(a, b) return string.lower(a) < string.lower(b) end)
+		
 		local str = string.lower(arg1)
-		for name, data in pairs(ExpBuddyDataDB) do
+		for name, data in pairs(maps) do
 			if str == "*" then
 				-- Return every map's data.
 				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
