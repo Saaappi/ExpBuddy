@@ -5,7 +5,7 @@ local xpcall = xpcall
 ExpBuddy = LibStub("AceAddon-3.0"):NewAddon("ExpBuddy", "AceConsole-3.0")
 
 function ExpBuddy:SlashCommandHandler(cmd)
-	local cmd, arg1, arg2 = string.split(" ", cmd)
+	local cmd, arg1 = string.split(" ", cmd)
 	if not cmd or cmd == "" then
 		Settings.OpenToCategory(addonName)
 	elseif cmd == "tracker" then
@@ -104,6 +104,20 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			StaticPopup_Show("EXPBUDDY_ACK_RESET")
 		end)
 		frame:AddChild(addonTable.resetButton)
+	elseif cmd == "search" and arg1 ~= nil then
+		local str = string.lower(arg1)
+		for name, data in pairs(ExpBuddyDataDB) do
+			if string.find(string.lower(name), str) then
+				-- We have a zone name match, so print the data!
+				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)" .. "\n"
+				)
+			end
+		end
 	end
 end
 
