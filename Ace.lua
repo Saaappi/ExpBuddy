@@ -65,12 +65,22 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		local entryLevelEditbox = AceGUI:Create("EditBox")
 		entryLevelEditbox:SetLabel("Entry Level")
 		entryLevelEditbox:SetWidth(75)
+		entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
+			if tonumber(text) then
+				ExpBuddy[addonTable.currentMap]["EntryLevel"] = tonumber(text)
+			end
+		end)
 		frame:AddChild(entryLevelEditbox)
 		
 		-- Exit Level Editbox
 		local exitLevelEditbox = AceGUI:Create("EditBox")
 		exitLevelEditbox:SetLabel("Exit Level")
 		exitLevelEditbox:SetWidth(75)
+		exitLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
+			if tonumber(text) then
+				ExpBuddy[addonTable.currentMap]["ExitLevel"] = tonumber(text)
+			end
+		end)
 		frame:AddChild(exitLevelEditbox)
 	end
 end
