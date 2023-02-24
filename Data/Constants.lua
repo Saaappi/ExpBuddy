@@ -1,4 +1,5 @@
 local addonName, addonTable = ...
+local AceGUI = LibStub("AceGUI-3.0")
 
 addonTable.FormatNumber = function(number)
 	local formattedNumber = number
@@ -11,6 +12,14 @@ addonTable.FormatNumber = function(number)
 	return formattedNumber
 end
 
+addonTable.Substring = function(str)
+	if string.len(str) <= 15 then
+		return str
+	else
+		return string.sub(str, 1, 15) .. "..."
+	end
+end
+
 local data = {
 	-- Numbers
 	["MAX_LEVEL"] 			= 70,
@@ -19,3 +28,13 @@ local data = {
 	["COLORED_ADDON_NAME"] 	= "|cff00FFFF"..addonName.."|r"
 }
 addonTable.data = data
+
+-- AceGUI Widgets
+addonTable.currentMapLabel = AceGUI:Create("Label")
+addonTable.monstersLabel = AceGUI:Create("Label")
+addonTable.restedLabel = AceGUI:Create("Label")
+addonTable.questsLabel = AceGUI:Create("Label")
+addonTable.nodesLabel = AceGUI:Create("Label")
+addonTable.explorationLabel = AceGUI:Create("Label")
+addonTable.entryLevelEditbox = AceGUI:Create("EditBox")
+addonTable.exitLevelEditbox = AceGUI:Create("EditBox")

@@ -9,7 +9,7 @@ local function GetCurrentZone()
 			-- Only update the map if it's a zone or dungeon.
 			if map.mapType == 3 or map.mapType == 4 then
 				addonTable.currentMap = map.name
-				addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. string.sub(addonTable.currentMap, 1, 15) .. "...")
+				addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. addonTable.Substring(addonTable.currentMap))
 			elseif map.mapType == 5 or map.mapType == 6 then
 				-- Use the parent map because these current map
 				-- is either a micro or orphan part of a parenting
@@ -17,7 +17,7 @@ local function GetCurrentZone()
 				map = C_Map.GetMapInfo(map.parentMapID)
 				if map then
 					addonTable.currentMap = map.name
-					addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. string.sub(addonTable.currentMap, 1, 15) .. "...")
+					addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. addonTable.Substring(addonTable.currentMap))
 				end
 			end
 		end
@@ -30,24 +30,15 @@ local function GetCurrentZone()
 end
 
 e:RegisterEvent("ADDON_LOADED")
-e:RegisterEvent("PLAYER_LEVEL_UP")
+e:RegisterEvent("PLAYER_LOGIN")
 e:RegisterEvent("ZONE_CHANGED")
 e:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 e:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" then
 		local addonLoaded = ...
 		if addonLoaded == addonName then
-			-- If the options table is nil, then set it to
-			-- an empty table.
-			if ExpBuddyOptionsDB == nil then
-				ExpBuddyOptionsDB = {}
-			end
-		
-			C_Timer.After(1, function()
-				-- Set the current map either to the current map or
-				-- to its parent.
-				GetCurrentZone()
-				
+			GetCurrentZone()
+			C_Timer.After(3, function()
 				-- If the primary experience table is nil, then
 				-- set it to an empty table.
 				if ExpBuddyDataDB == nil then
@@ -71,17 +62,12 @@ e:SetScript("OnEvent", function(self, event, ...)
 					ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = 0
 				end
 			end)
-			
-			addonTable.playerLevel = UnitLevel("player")
 		end
 	end
 	
-	if event == "PLAYER_LEVEL_UP" then
-		local level = ...
-		addonTable.playerLevel = level
-	end
-	
-	if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then
-		GetCurrentZone()
+	if event == "PLAYER_LOGIN" or event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then
+		C_Timer.After(1, function()
+			GetCurrentZone()
+		end)
 	end
 end)
