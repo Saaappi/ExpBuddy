@@ -60,7 +60,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			
 			-- Monsters Label
 			local monstersXP = addonTable.FormatNumber(tostring(labels.Monsters))
-			addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(labels.Monsters) .. "%)")
+			addonTable.monstersLabel:SetText("\n\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(labels.Monsters) .. "%)")
 			frame:AddChild(addonTable.monstersLabel)
 			
 			-- Rested XP Label

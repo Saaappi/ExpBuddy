@@ -23,7 +23,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local monsterXP = tonumber(FindNumber(msg, 1))
 			experience = experience + monsterXP
 			ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = experience
-			addonTable.monstersLabel:SetText(CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
+			addonTable.monstersLabel:SetText("\n\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
 			
 			-- If the player has rested experience, then let's track
 			-- how much experience was earned from the monster while
