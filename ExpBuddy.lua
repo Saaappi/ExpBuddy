@@ -24,6 +24,8 @@ local function GetCurrentZone()
 				if ExpBuddyDataDB[map.name] == nil then
 					AddMap(map.name)
 				end
+				
+				-- Since the map changed, let's update all the widgets.
 				addonTable.currentMap = map.name
 				addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. addonTable.Substring(addonTable.currentMap))
 				addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
@@ -43,6 +45,8 @@ local function GetCurrentZone()
 					if ExpBuddyDataDB[map.name] == nil then
 						AddMap(map.name)
 					end
+					
+					-- Since the map changed, let's update all the widgets.
 					addonTable.currentMap = map.name
 					addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. addonTable.Substring(addonTable.currentMap))
 					addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
