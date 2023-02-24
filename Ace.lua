@@ -180,8 +180,6 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				)
 			end
 		end
-	elseif cmd == "position" then
-		print(frame:GetPoint())
 	end
 end
 
