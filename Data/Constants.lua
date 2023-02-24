@@ -40,9 +40,9 @@ addonTable.CalculatePercent = function(cat)
 	
 	local multiplier = 10^(2 or 0)
 	if (monsters+rested+quests+nodes+exploration) == 0 then
-		return 0.00
+		return 0
 	else
-		return math.floor((cat/(monsters+rested+quests+nodes+exploration)) * multiplier + 0.5) / multiplier
+		return math.floor((cat/(monsters+rested+quests+nodes+exploration))*100)
 	end
 end
 
