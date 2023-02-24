@@ -18,7 +18,6 @@ local function GetCurrentZone()
 	if mapID then
 		local map = C_Map.GetMapInfo(mapID)
 		if map then
-			
 			-- Only update the map if it's a zone or dungeon.
 			if map.mapType == 3 or map.mapType == 4 then
 				-- The map isn't in the table, so let's create it before continuing.
@@ -80,13 +79,14 @@ e:SetScript("OnEvent", function(self, event, ...)
 	if event == "ADDON_LOADED" then
 		local addonLoaded = ...
 		if addonLoaded == addonName then
-			GetCurrentZone()
 			C_Timer.After(3, function()
 				-- If the primary experience table is nil, then
 				-- set it to an empty table.
 				if ExpBuddyDataDB == nil then
 					ExpBuddyDataDB = {}
 				end
+				
+				GetCurrentZone()
 				
 				-- If the player's current zone isn't in the
 				-- table, then add it.
