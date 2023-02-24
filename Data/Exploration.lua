@@ -19,19 +19,11 @@ e:SetScript("OnEvent", function(self, event, ...)
 			-- The player discovered an area for some experience, so
 			-- let's add it to the Exploration experience for the current
 			-- map.
-			local experience = ExpBuddyDB[addonTable.currentMap]["Exploration"]
+			local experience = ExpBuddyDataDB[addonTable.currentMap]["Exploration"]
 			local explorationXP = tonumber(FindNumber(msg, 1))
 			experience = experience + explorationXP
-			ExpBuddyDB[addonTable.currentMap]["Exploration"] = experience
-			ExpBuddyPctDB[addonTable.currentMap]["Exploration"] = ExpBuddyPctDB[addonTable.currentMap]["Exploration"] + explorationXP
-			
-			-- TODO: This should be stored silently unless the GUI is
-			-- shown.
-			--[[if ExpBuddyOptionsDB.Verbose then
-				print(L_GLOBALSTRINGS["Colored Addon Name"] .. ": [Exploration]: " .. explorationExp .. " [+" .. experience .. "] [" .. addonTable.currentMap .. "]")
-			elseif ExpBuddyTrackerMenu:IsVisible() then
-				ExpBuddyUpdateExperience("ExpBuddyTracker")
-			end]]
+			ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = experience
+			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(experience)))
 		end
 	end
 end)
