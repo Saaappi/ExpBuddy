@@ -126,6 +126,8 @@ function ExpBuddy:SlashCommandHandler(cmd)
 						ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
 						ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
 						ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = 0
 						
 						-- Update labels
 						addonTable.ResetLabels()
