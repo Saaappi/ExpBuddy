@@ -38,11 +38,13 @@ addonTable.CalculatePercent = function(cat)
 	local nodes = ExpBuddyDataDB[addonTable.currentMap]["Nodes"]
 	local exploration = ExpBuddyDataDB[addonTable.currentMap]["Exploration"]
 	
-	local multiplier = 10^(2 or 0)
 	if (monsters+rested+quests+nodes+exploration) == 0 then
 		return 0
 	else
-		return math.floor((cat/(monsters+rested+quests+nodes+exploration))*100)
+		return string.format(
+			"%.2f",
+			(cat/(monsters+rested+quests+nodes+exploration))*100
+		)
 	end
 end
 
