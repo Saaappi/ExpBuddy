@@ -149,7 +149,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		end
 	elseif cmd == "search" and arg1 ~= nil then
 		-- Make a local variable and copy the saved variable to it. We want
-		-- the temporary table to sort by map name alphabetically.
+		-- the temporary table to sort alphabetically by map name.
 		local maps = {}
 		for k, v in pairs(ExpBuddyDataDB) do
 			table.insert(maps, { ["name"] = k, ["map"] = v })
