@@ -50,34 +50,37 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			frame:SetWidth(200)
 			frame:SetHeight(350)
 			
+			-- Get all the labels' data.
+			local labels = addonTable.GetData()
+			
 			-- All widgets are created in Data\Constants.lua.
 			-- Current Zone Label
 			addonTable.currentMapLabel:SetText("|cffFFD100" .. "Current Map|r: " .. addonTable.Substring(addonTable.currentMap))
 			frame:AddChild(addonTable.currentMapLabel)
 			
 			-- Monsters Label
-			local monstersXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]))
-			addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)")
+			local monstersXP = addonTable.FormatNumber(tostring(labels.Monsters))
+			addonTable.monstersLabel:SetText("\n" .. CreateAtlasMarkup("ShipMission_DangerousSkull", 16, 16) .. " |cffFFD100" .. "Monsters|r: " .. monstersXP .. " (" .. addonTable.CalculatePercent(labels.Monsters) .. "%)")
 			frame:AddChild(addonTable.monstersLabel)
 			
 			-- Rested XP Label
-			local restedXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"]))
-			addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. restedXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)")
+			local restedXP = addonTable.FormatNumber(tostring(labels.Rested))
+			addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. restedXP .. " (" .. addonTable.CalculatePercent(labels.Rested) .. "%)")
 			frame:AddChild(addonTable.restedLabel)
 			
 			-- Quests Label
-			local questsXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"]))
-			addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. questsXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)")
+			local questsXP = addonTable.FormatNumber(tostring(labels.Quests))
+			addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. questsXP .. " (" .. addonTable.CalculatePercent(labels.Quests) .. "%)")
 			frame:AddChild(addonTable.questsLabel)
 			
 			-- Nodes Label
-			local nodesXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]))
-			addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. nodesXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)")
+			local nodesXP = addonTable.FormatNumber(tostring(labels.Nodes))
+			addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. nodesXP .. " (" .. addonTable.CalculatePercent(labels.Nodes) .. "%)")
 			frame:AddChild(addonTable.nodesLabel)
 			
 			-- Exploration Label
-			local explorationXP = addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]))
-			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)")
+			local explorationXP = addonTable.FormatNumber(tostring(labels.Exploration))
+			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
 			frame:AddChild(addonTable.explorationLabel)
 			
 			-- Entry Level Editbox
@@ -146,13 +149,14 @@ function ExpBuddy:SlashCommandHandler(cmd)
 		local str = string.lower(arg1)
 		for name, data in pairs(ExpBuddyDataDB) do
 			if string.find(string.lower(name), str) then
+				local labels = addonTable.GetData()
 				-- We have a zone name match, so print the data!
 				print("|cffFFD100" .. name .. "|r:" .. "\n" ..
-					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Monsters"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Monsters"]) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Rested"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Rested"]) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Quests"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Exploration"])) .. " |cffADD8E6(" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)|r" .. "\n"
+					"|cffFFD100" .. "Monsters|r: " .. addonTable.FormatNumber(tostring(labels.Monsters)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Monsters) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(labels.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Rested) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(labels.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Quests) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(labels.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Nodes) .. "%)|r" .. "\n" ..
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(labels.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(labels.Exploration) .. "%)|r" .. "\n"
 				)
 			end
 		end
