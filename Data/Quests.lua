@@ -16,7 +16,6 @@ e:SetScript("OnEvent", function(self, event, ...)
 				experience = ExpBuddyDataDB[addonTable.currentMap]["Quests"]
 				experience = experience + questXP
 				ExpBuddyDataDB[addonTable.currentMap]["Quests"] = experience
-				addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(experience)))
 			end
 			
 			-- This event will also add to the Nodes category, but we can
@@ -25,6 +24,8 @@ e:SetScript("OnEvent", function(self, event, ...)
 			if ExpBuddyDataDB[addonTable.currentMap]["Nodes"] ~= 0 then
 				ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = ExpBuddyDataDB[addonTable.currentMap]["Nodes"] - questXP
 			end
+			
+			addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(experience)))
 		end)
 	end
 end)
