@@ -80,37 +80,8 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			
 			-- Exploration Label
 			local explorationXP = addonTable.FormatNumber(tostring(labels.Exploration))
-			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
+			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n")
 			frame:AddChild(addonTable.explorationLabel)
-			
-			-- REMOVE THESE EDITBOXES IN ANOTHER UPDATE
-			-- Entry Level Editbox
-			--[[addonTable.entryLevelEditbox:SetLabel("Entry Level")
-			addonTable.entryLevelEditbox:SetWidth(75)
-			addonTable.entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
-				if tonumber(text) then
-					ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"] = tonumber(text)
-				else
-					print(addonTable.data["COLORED_ADDON_NAME"] .. ": Please input a number.")
-					addonTable.entryLevelEditbox:SetText("")
-				end
-			end)
-			addonTable.entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"])
-			frame:AddChild(addonTable.entryLevelEditbox)
-			
-			-- Exit Level Editbox
-			addonTable.exitLevelEditbox:SetLabel("Exit Level")
-			addonTable.exitLevelEditbox:SetWidth(75)
-			addonTable.exitLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
-				if tonumber(text) then
-					ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"] = tonumber(text)
-				else
-					print(addonTable.data["COLORED_ADDON_NAME"] .. ": Please input a number.")
-					addonTable.exitLevelEditbox:SetText("")
-				end
-			end)
-			addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
-			frame:AddChild(addonTable.exitLevelEditbox)]]
 			
 			-- Reset Button
 			addonTable.resetButton:SetText("Reset")

@@ -23,7 +23,7 @@ e:SetScript("OnEvent", function(self, event, ...)
 			local explorationXP = tonumber(FindNumber(msg, 1))
 			experience = experience + explorationXP
 			ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = experience
-			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)")
+			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)\n")
 		end
 	end
 end)

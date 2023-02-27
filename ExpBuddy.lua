@@ -9,8 +9,6 @@ local function AddMap(map)
 	ExpBuddyDataDB[map]["Rested"] = 0
 	ExpBuddyDataDB[map]["Nodes"] = 0
 	ExpBuddyDataDB[map]["Exploration"] = 0
-	ExpBuddyDataDB[map]["EntryLevel"] = 0
-	ExpBuddyDataDB[map]["ExitLevel"] = 0
 end
 
 local function GetCurrentZone()
@@ -34,9 +32,7 @@ local function GetCurrentZone()
 				addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(labels.Rested) .. " (" .. addonTable.CalculatePercent(labels.Rested) .. "%)")
 				addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(labels.Quests) .. " (" .. addonTable.CalculatePercent(labels.Quests) .. "%)")
 				addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(labels.Nodes) .. " (" .. addonTable.CalculatePercent(labels.Nodes) .. "%)")
-				addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(labels.Exploration) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
-				addonTable.entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"])
-				addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
+				addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(labels.Exploration) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n")
 			elseif map.mapType == 5 or map.mapType == 6 then
 				-- Use the parent map because these current map
 				-- is either a micro or orphan part of a parenting
@@ -57,9 +53,7 @@ local function GetCurrentZone()
 					addonTable.restedLabel:SetText("\n" .. CreateAtlasMarkup("Gamepad_Rev_Home_64", 16, 16) .. " |cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(labels.Rested) .. " (" .. addonTable.CalculatePercent(labels.Rested) .. "%)")
 					addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(labels.Quests) .. " (" .. addonTable.CalculatePercent(labels.Quests) .. "%)")
 					addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(labels.Nodes) .. " (" .. addonTable.CalculatePercent(labels.Nodes) .. "%)")
-					addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(labels.Exploration) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
-					addonTable.entryLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["EntryLevel"])
-					addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
+					addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(labels.Exploration) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n")
 				end
 			end
 		end
