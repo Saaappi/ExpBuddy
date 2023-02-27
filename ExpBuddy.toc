@@ -34,3 +34,6 @@ ExpBuddy.lua
 
 # Options
 Options\Main.lua
+
+# No Order
+Bindings.lua

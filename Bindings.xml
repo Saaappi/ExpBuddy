@@ -1,0 +1,5 @@
+<Bindings>
+	<Binding name="EXPBUDDY_OPEN_TRACKER" header="EXPBUDDY" category="ADDONS">
+		ExpBuddyKeybindHandler(GetBindingKey("EXPBUDDY_OPEN_TRACKER"))
+	</Binding>
+</Bindings>
