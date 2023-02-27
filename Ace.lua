@@ -76,7 +76,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			
 			-- Exploration Label
 			local explorationXP = addonTable.FormatNumber(tostring(labels.Exploration))
-			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n")
+			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n\n")
 			frame:AddChild(addonTable.explorationLabel)
 			
 			-- Reset Button
@@ -138,7 +138,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.map.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Rested) .. "%)|r" .. "\n" ..
 					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.map.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Quests) .. "%)|r" .. "\n" ..
 					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.map.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Nodes) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r" .. "\n"
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r"
 				)
 			elseif string.find(string.lower(data.name), str) then
 				-- We have a match, so print the data!
@@ -147,7 +147,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 					"|cffFFD100" .. "Rested|r: " .. addonTable.FormatNumber(tostring(data.map.Rested)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Rested) .. "%)|r" .. "\n" ..
 					"|cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(data.map.Quests)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Quests) .. "%)|r" .. "\n" ..
 					"|cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(data.map.Nodes)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Nodes) .. "%)|r" .. "\n" ..
-					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r" .. "\n"
+					"|cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(data.map.Exploration)) .. " |cffADD8E6(" .. addonTable.CalculatePercent(data.map.Exploration) .. "%)|r"
 				)
 			end
 		end
