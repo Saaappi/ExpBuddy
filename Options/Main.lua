@@ -17,53 +17,50 @@ local mainOptions = {
 			type = "description",
 			fontSize = "medium",
 		},
-		--[[addedHeader = {
+		addedHeader = {
 			name = "Added",
 			order = 10,
 			type = "header",
 		},
 		addedText = {
-			--name = coloredDash .. "|cffFF0000Nothing was added in this release.",
-			name = coloredDash .. "Added the ability for HelpMePlay to ignore specific quest rewards from being equipped. The |cffFFD100Wind-Sealed Mana Capsule|r is the only item on the list...for now.\n" ..
-			coloredDash .. "Automated the gossips for the Maidens of Inspiration during the Tyr quests.",
+			name = coloredDash .. "Added support for a keybind to open and close the tracker.",
 			order = 11,
 			type = "description",
 			fontSize = "medium",
-		},]]
-		updatedHeader = {
+		},
+		--[[updatedHeader = {
 			name = "Changed / Updated",
 			order = 20,
 			type = "header",
 		},
 		updatedText = {
-			--name = coloredDash .. "|cffFF0000Nothing was updated in this release.",
-			name = coloredDash .. "Completely overhauled the entire addon and introduced the Ace3 framework.",
+			name = "",
 			order = 21,
 			type = "description",
 			fontSize = "medium",
-		},
+		},]]
 		--[[fixedHeader = {
 			name = "Fixed",
 			order = 30,
 			type = "header",
 		},
 		fixedText = {
-			name = coloredDash .. "Fixed an issue that I caused in 2.0.13 that prevented most looted items from being equipped.",
+			name = "",
 			order = 31,
 			type = "description",
 			fontSize = "medium",
 		},]]
-		--[[removedHeader = {
+		removedHeader = {
 			name = "Removed",
 			order = 40,
 			type = "header",
 		},
 		removedText = {
-			name = coloredDash .. "|cffFF0000Nothing was removed in this release.|r",
+			name = coloredDash .. "Removed the Entry and Exit Level editboxes from the tracker.",
 			order = 41,
 			type = "description",
 			fontSize = "medium",
-		},]]
+		},
 	},
 }
 addonTable.mainOptions = mainOptions

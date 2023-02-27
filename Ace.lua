@@ -83,8 +83,9 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. explorationXP .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)")
 			frame:AddChild(addonTable.explorationLabel)
 			
+			-- REMOVE THESE EDITBOXES IN ANOTHER UPDATE
 			-- Entry Level Editbox
-			addonTable.entryLevelEditbox:SetLabel("Entry Level")
+			--[[addonTable.entryLevelEditbox:SetLabel("Entry Level")
 			addonTable.entryLevelEditbox:SetWidth(75)
 			addonTable.entryLevelEditbox:SetCallback("OnEnterPressed", function(widget, event, text)
 				if tonumber(text) then
@@ -109,7 +110,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				end
 			end)
 			addonTable.exitLevelEditbox:SetText(ExpBuddyDataDB[addonTable.currentMap]["ExitLevel"])
-			frame:AddChild(addonTable.exitLevelEditbox)
+			frame:AddChild(addonTable.exitLevelEditbox)]]
 			
 			-- Reset Button
 			addonTable.resetButton:SetText("Reset")
