@@ -9,8 +9,6 @@ addonTable.restedLabel = AceGUI:Create("Label")
 addonTable.questsLabel = AceGUI:Create("Label")
 addonTable.nodesLabel = AceGUI:Create("Label")
 addonTable.explorationLabel = AceGUI:Create("Label")
-addonTable.entryLevelEditbox = AceGUI:Create("EditBox")
-addonTable.exitLevelEditbox = AceGUI:Create("EditBox")
 addonTable.resetButton = AceGUI:Create("Button")
 
 -- Hide the frame from view since the Create function
@@ -37,8 +35,6 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			addonTable.questsLabel = AceGUI:Create("Label")
 			addonTable.nodesLabel = AceGUI:Create("Label")
 			addonTable.explorationLabel = AceGUI:Create("Label")
-			addonTable.entryLevelEditbox = AceGUI:Create("EditBox")
-			addonTable.exitLevelEditbox = AceGUI:Create("EditBox")
 			addonTable.resetButton = AceGUI:Create("Button")
 			
 			-- Set some attributes for the frame.
