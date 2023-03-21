@@ -17,47 +17,14 @@ local mainOptions = {
 			type = "description",
 			fontSize = "medium",
 		},
-		addedHeader = {
-			name = "Added",
+		changesHeader = {
+			name = "Changes",
 			order = 10,
 			type = "header",
 		},
-		addedText = {
-			name = coloredDash .. "Added support for a keybind to open and close the tracker.",
+		changesText = {
+			name = coloredDash .. "Updated the TOC to support Patch 10.0.7.",
 			order = 11,
-			type = "description",
-			fontSize = "medium",
-		},
-		--[[updatedHeader = {
-			name = "Changed / Updated",
-			order = 20,
-			type = "header",
-		},
-		updatedText = {
-			name = "",
-			order = 21,
-			type = "description",
-			fontSize = "medium",
-		},]]
-		--[[fixedHeader = {
-			name = "Fixed",
-			order = 30,
-			type = "header",
-		},
-		fixedText = {
-			name = "",
-			order = 31,
-			type = "description",
-			fontSize = "medium",
-		},]]
-		removedHeader = {
-			name = "Removed",
-			order = 40,
-			type = "header",
-		},
-		removedText = {
-			name = coloredDash .. "Removed the Entry and Exit Level editboxes from the tracker.",
-			order = 41,
 			type = "description",
 			fontSize = "medium",
 		},
