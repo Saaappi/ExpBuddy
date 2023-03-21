@@ -4,6 +4,7 @@
 ## Notes: Keeps track of experience earned from quests, monsters, nodes, exploration and rested per zone.
 ## SavedVariablesPerCharacter: ExpBuddyDataDB
 ## Title: ExpBuddy
+#
 ## Version: 2.0.2
 
 # Libraries
