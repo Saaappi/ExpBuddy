@@ -23,7 +23,7 @@ local mainOptions = {
 			type = "header",
 		},
 		changesText = {
-			name = coloredDash .. "Updated the TOC to support Patch 10.0.7.",
+			name = coloredDash .. "Fixed an issue where the current map could be nil.",
 			order = 11,
 			type = "description",
 			fontSize = "medium",
