@@ -88,13 +88,17 @@ e:SetScript("OnEvent", function(self, event, ...)
 				-- If the player's current zone isn't in the
 				-- table, then none of the subtables will be
 				-- either.
-				if ExpBuddyDataDB[addonTable.currentMap] == nil then
-					ExpBuddyDataDB[addonTable.currentMap] = {}
-					ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
-					ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
-					ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
-					ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
-					ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+				if addonTable.currentMap then
+					if ExpBuddyDataDB[addonTable.currentMap] == nil then
+						ExpBuddyDataDB[addonTable.currentMap] = {}
+						ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
+						ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
+					end
+				else
+					print("|cff00FFFF"..addonName.."|r: " .. "The current map is nil. I recommend you leave the zone, then go back.")
 				end
 			end)
 		end
