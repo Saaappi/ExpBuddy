@@ -40,7 +40,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 			-- Set some attributes for the frame.
 			frame:SetCallback("OnClose", function(widget) AceGUI:Release(widget) end)
 			frame:SetTitle("ExpBuddy")
-			frame:SetStatusText(GetAddOnMetadata(addonName, "Version"))
+			frame:SetStatusText(C_AddOns.GetAddOnMetadata(addonName, "Version"))
 			frame:SetLayout("List")
 			frame:EnableResize(false)
 			frame:SetWidth(215)
