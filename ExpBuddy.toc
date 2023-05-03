@@ -1,11 +1,11 @@
 ## Author: LightskyGG
-## Interface: 100007
+## Interface: 100100
 ## Name: ExpBuddy
 ## Notes: Keeps track of experience earned from quests, monsters, nodes, exploration and rested per zone.
 ## SavedVariablesPerCharacter: ExpBuddyDataDB
 ## Title: ExpBuddy
 #
-## Version: 2.0.3
+## Version: 2.1.0
 
 # Libraries
 Lib\LibStub\LibStub.lua
