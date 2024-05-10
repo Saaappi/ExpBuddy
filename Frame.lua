@@ -25,7 +25,27 @@ addon.LoadFrame = function()
 		frame:SetSize(frameBaseWidth, frameBaseHeight)
 		frame.TitleText:SetText(addonName)
 	end
-	frame:SetPoint("CENTER", UIParent, "CENTER")
+	frame:SetPoint(ExpBuddyDB.point or "CENTER", UIParent, ExpBuddyDB.relativePoint or "CENTER", ExpBuddyDB.xOfs or 0, ExpBuddyDB.yOfs or 0)
+
+	-- Make the frame movable.
+	frame:SetMovable(true)
+	frame:EnableMouse(true)
+	frame:RegisterForDrag("LeftButton")
+	frame:SetScript("OnDragStart", function(self)
+		self:StartMoving()
+	end)
+	frame:SetScript("OnDragStop", function(self)
+		-- Once the frame stops moving, get the position data so we
+		-- can open the frame at that position next time.
+		self:StopMovingOrSizing()
+		local point, _, relativePoint, xOfs, yOfs = self:GetPoint()
+		if point and relativePoint and xOfs and yOfs then
+			ExpBuddyDB.point = point
+			ExpBuddyDB.relativePoint = relativePoint
+			ExpBuddyDB.xOfs = xOfs
+			ExpBuddyDB.yOfs = yOfs
+		end
+	end)
 
 	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
 	currentMapName:SetPoint("TOP", frame, "TOP", 0, -30)
