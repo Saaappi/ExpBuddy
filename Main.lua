@@ -25,8 +25,8 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
             ExpBuddy = {}
 
             -- Initialize the addon's saved variables.
-            if ExpBuddyDB == nil then
-                ExpBuddyDB = {}
+            if ExpBuddyPositionDB == nil then
+                ExpBuddyPositionDB = {}
             end
             if ExpBuddyDataDB == nil then
                 ExpBuddyDataDB = {}
