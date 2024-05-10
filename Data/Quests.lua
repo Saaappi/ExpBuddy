@@ -10,16 +10,17 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
 			return
 		end
 
-		local _, experienceGained = ...
+		local questID, experienceGained = ...
+		local questMap = ExpBuddyQuestDB[questID]
 		C_Timer.After(1, function()
 			local newExperience = 0
 			if experienceGained > 0 then
 				-- The player completed a quest for some experience, so
 				-- let's add it to the Quests experience for the current
 				-- map.
-				local currentExperience = ExpBuddyDataDB[addon.mapID].Quests
+				local currentExperience = ExpBuddyDataDB[questMap].Quests
 				newExperience = currentExperience + experienceGained
-				ExpBuddyDataDB[addon.mapID].Quests = newExperience
+				ExpBuddyDataDB[questMap].Quests = newExperience
 			end
 
 			-- This event will also add to the Nodes category, but we can

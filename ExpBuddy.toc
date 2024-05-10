@@ -3,7 +3,7 @@
 ## Title: ExpBuddy
 ## Version: 3.0.0
 ## IconTexture: 894556
-## SavedVariables: ExpBuddyPositionDB
+## SavedVariables: ExpBuddyQuestDB, ExpBuddyPositionDB
 ## SavedVariablesPerCharacter: ExpBuddyDataDB
 
 # Main

@@ -16,6 +16,7 @@ end
 eventHandler:RegisterEvent("ADDON_LOADED")
 eventHandler:RegisterEvent("PLAYER_LEVEL_CHANGED")
 eventHandler:RegisterEvent("PLAYER_LOGIN")
+eventHandler:RegisterEvent("QUEST_ACCEPTED")
 eventHandler:RegisterEvent("ZONE_CHANGED")
 eventHandler:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 eventHandler:SetScript("OnEvent", function(self, event, ...)
@@ -27,6 +28,9 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
             ExpBuddy = {}
 
             -- Initialize the addon's saved variables.
+            if ExpBuddyQuestDB == nil then
+                ExpBuddyQuestDB = {}
+            end
             if ExpBuddyPositionDB == nil then
                 ExpBuddyPositionDB = {}
             end
@@ -77,6 +81,13 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                 eventHandler:UnregisterEvent("PLAYER_LEVEL_CHANGED")
             end
         end)
+    end
+    if event == "QUEST_ACCEPTED" then
+        local questID = ...
+        if not ExpBuddyQuestDB[questID] then
+            ExpBuddyQuestDB[questID] = addon.mapID
+        end
+        print(format("Quest %d accepted in %s.", questID, ExpBuddyDataDB[addon.mapID].mapName))
     end
     if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then
         C_Timer.After(0.5, function()
