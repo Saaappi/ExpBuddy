@@ -35,6 +35,8 @@ local icons = {
 	},
 }
 
+-- Refreshes the frame to update any values that may have changed
+-- or need to change.
 addon.RefreshFrame = function(mapID)
 	if frame and frame:IsVisible() then
 		currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[mapID].mapName))
@@ -57,11 +59,16 @@ addon.LoadFrame = function()
 		end
 	end
 
+	-- Create the frame if it doesn't exist and set some standard attributes
+	-- for the frame.
 	if not frame then
 		frame = CreateFrame("Frame", addonName .. "Frame", UIParent, "BasicFrameTemplateWithInset")
 		frame:SetSize(frameBaseWidth, frameBaseHeight)
 		frame.TitleText:SetText(addonName)
 	end
+
+	-- If the player has opened the frame before and moved it, then use the
+	-- saved position for the new SetPoint, otherwise use the default.
 	if ExpBuddyPositionDB.SavedPosition then
 		frame:SetPoint(unpack(ExpBuddyPositionDB.SavedPosition))
 	else
@@ -88,7 +95,7 @@ addon.LoadFrame = function()
 	currentMapName:SetPoint("TOP", frame, "TOP", 0, -30)
 	currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[addon.mapID].mapName))
 
-	-- Create the entry and exit level editboxes.
+	-- Create the entry level edit box.
 	entryLevelEditBox = CreateFrame("EditBox", addonName .. "EntryLevelEditBox", frame, "InputBoxTemplate")
 	entryLevelEditBox:SetAutoFocus(false)
 	entryLevelEditBox:SetSize(80, 10)
@@ -109,9 +116,9 @@ addon.LoadFrame = function()
 			ExpBuddy.Print("The value must be a number.")
 		end
 	end)
-
 	entryLevelEditBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -75)
 
+	-- Create the exit level edit box.
 	exitLevelEditBox = CreateFrame("EditBox", addonName .. "EntryLevelEditBox", frame, "InputBoxTemplate")
 	exitLevelEditBox:SetAutoFocus(false)
 	exitLevelEditBox:SetSize(80, 10)
@@ -132,12 +139,10 @@ addon.LoadFrame = function()
 			ExpBuddy.Print("The value must be a number.")
 		end
 	end)
-
 	exitLevelEditBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -15, -75)
 
+	-- Create the different category icons and labels in the frame.
 	for index, icon in ipairs(icons) do
-		-- Create the specialization icon texture to indicate which spec
-		-- the corresponding edit box (the one to its right) is for.
 		local texture = frame:CreateTexture(addonName .. "FrameIcon" .. index, "BORDER")
 		if index == 1 then
 			texture:SetPoint("TOPLEFT", entryLevelEditBox, "BOTTOMLEFT", 0, -20)
@@ -147,12 +152,10 @@ addon.LoadFrame = function()
 		texture:SetSize(24, 24)
 		texture:SetTexture(icon.texture)
 
-		local labelName = frame:CreateFontString(nil, nil, "GameFontNormal")
-		labelName:SetPoint("LEFT", addonName .. "FrameIcon" .. index, "RIGHT", 5, 0)
-		labelName:SetText(icon.name)
+		local iconLabel = frame:CreateFontString(nil, nil, "GameFontNormal")
+		iconLabel:SetPoint("LEFT", addonName .. "FrameIcon" .. index, "RIGHT", 5, 0)
+		iconLabel:SetText(icon.name)
 
-		-- Create the border texture to overlay the specialization icon
-		-- texture above.
 		local border = frame:CreateTexture(nil, "ARTWORK")
 		border:SetPoint("CENTER", texture, "CENTER", 0, 0)
 		border:SetSize(29, 29)
