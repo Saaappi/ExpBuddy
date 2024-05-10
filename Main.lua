@@ -87,7 +87,6 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
         if not ExpBuddyQuestDB[questID] then
             ExpBuddyQuestDB[questID] = addon.mapID
         end
-        print(format("Quest %d accepted in %s.", questID, ExpBuddyDataDB[addon.mapID].mapName))
     end
     if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then
         C_Timer.After(0.5, function()

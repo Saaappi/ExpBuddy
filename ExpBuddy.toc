@@ -17,16 +17,10 @@ _Functions\Print.lua
 _Functions\Numbers.lua
 _Functions\Strings.lua
 
-# Frame Prerequisites
-Data\Constants.lua
-
 # Data
 Data\Quests.lua
 Data\Monsters.lua
 Data\Exploration.lua
 Data\Nodes.lua
-
-# General Stuff
-#ExpBuddy.lua
 
 Frame.lua
