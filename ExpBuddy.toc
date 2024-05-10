@@ -1,28 +1,29 @@
 ## Author: LightskyGG
-## Interface: 100100
-## Name: ExpBuddy
-## Notes: Keeps track of experience earned from quests, monsters, nodes, exploration and rested per zone.
-## SavedVariablesPerCharacter: ExpBuddyDataDB
+## Interface: 100207
 ## Title: ExpBuddy
-#
-## Version: 2.1.0
+## Version: 3.0.0
+## IconTexture: 894556
+## SavedVariablesPerCharacter: ExpBuddyDataDB
+
+# Main
+Main.lua
 
 # Libraries
-Lib\LibStub\LibStub.lua
-Lib\LibDataBroker-1.1\LibDataBroker-1.1.lua
-Lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
-Lib\AceAddon-3.0\AceAddon-3.0.xml
-Lib\AceEvent-3.0\AceEvent-3.0.xml
-Lib\AceDB-3.0\AceDB-3.0.xml
-Lib\AceConsole-3.0\AceConsole-3.0.xml
-Lib\AceGUI-3.0\AceGUI-3.0.xml
-Lib\AceConfig-3.0\AceConfig-3.0.xml
-Lib\AceHook-3.0\AceHook-3.0.xml
-Lib\AceComm-3.0\AceComm-3.0.xml
+#Lib\LibStub\LibStub.lua
+#Lib\LibDataBroker-1.1\LibDataBroker-1.1.lua
+#Lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
+#Lib\AceAddon-3.0\AceAddon-3.0.xml
+#Lib\AceEvent-3.0\AceEvent-3.0.xml
+#Lib\AceDB-3.0\AceDB-3.0.xml
+#Lib\AceConsole-3.0\AceConsole-3.0.xml
+#Lib\AceGUI-3.0\AceGUI-3.0.xml
+#Lib\AceConfig-3.0\AceConfig-3.0.xml
+#Lib\AceHook-3.0\AceHook-3.0.xml
+#Lib\AceComm-3.0\AceComm-3.0.xml
 
 # Frame Prerequisites
 Data\Constants.lua
-Ace.lua
+#Ace.lua
 
 # Data
 Data\Quests.lua
@@ -31,10 +32,7 @@ Data\Exploration.lua
 Data\Nodes.lua
 
 # General Stuff
-ExpBuddy.lua
+#ExpBuddy.lua
 
 # Options
-Options\Main.lua
-
-# No Order
-Bindings.lua
+#Options\Main.lua
