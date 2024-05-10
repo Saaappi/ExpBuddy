@@ -5,6 +5,12 @@ local frameBaseHeight = 350
 local frameBaseWidth = 215
 local currentMapName
 
+addon.UpdateMapName = function(name)
+	if frame and frame:IsVisible() then
+		currentMapName:SetText(addon.TruncateMapName(name))
+	end
+end
+
 addon.LoadFrame = function()
 	-- If the frame is already visible, then hide it.
 	if frame then
@@ -22,7 +28,7 @@ addon.LoadFrame = function()
 	frame:SetPoint("CENTER", UIParent, "CENTER")
 
 	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
-	currentMapName:SetPoint("TOP", frame, "TOP", 0, -25)
+	currentMapName:SetPoint("TOP", frame, "TOP", 0, -30)
 	currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[addon.mapID].mapName))
 
 	frame:Show()

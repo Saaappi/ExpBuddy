@@ -55,6 +55,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                     if not ExpBuddyDataDB[addon.mapID] then
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
+                    addon.UpdateFrameMapName(mapInfo.name)
                 end
             else
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
@@ -86,6 +87,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                     if not ExpBuddyDataDB[addon.mapID] then
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
+                    addon.UpdateFrameMapName(mapInfo.name)
                 end
             else
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
