@@ -200,7 +200,7 @@ addon.LoadFrame = function()
 	versionText:SetText(C_AddOns.GetAddOnMetadata(addonName, "Version"))
 
 	resetButton = CreateFrame("Button", addonName .. "ResetButton", frame, "UIPanelButtonTemplate")
-	resetButton:SetSize(125, 25)
+	resetButton:SetSize(100, 25)
 	resetButton:RegisterForClicks("LeftButtonUp")
 	resetButton:SetText("Reset")
 
