@@ -11,17 +11,6 @@ addonTable.GetData = function()
 	return tbl
 end
 
-addonTable.FormatNumber = function(number)
-	local formattedNumber = number
-	while true do  
-		formattedNumber, k = string.gsub(formattedNumber, "^(-?%d+)(%d%d%d)", '%1,%2')
-		if (k==0) then
-			break
-		end
-	end
-	return formattedNumber
-end
-
 addonTable.Substring = function(str)
 	if string.len(str) <= 15 then
 		return str
@@ -55,12 +44,3 @@ addonTable.ResetLabels = function()
 	addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(labels.Nodes)) .. " (" .. addonTable.CalculatePercent(labels.Nodes) .. "%)")
 	addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(labels.Exploration)) .. " (" .. addonTable.CalculatePercent(labels.Exploration) .. "%)\n\n")
 end
-
-local data = {
-	-- Numbers
-	["MAX_LEVEL"] 			= 70,
-	--
-	-- Strings
-	["COLORED_ADDON_NAME"] 	= "|cff00FFFF"..addonName.."|r"
-}
-addonTable.data = data
