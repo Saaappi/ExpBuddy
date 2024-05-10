@@ -1,5 +1,19 @@
 local addonName, addon = ...
 
+addon.CalculatePercent = function(number)
+	local monsterExperience = ExpBuddyDataDB[addon.mapID].Monsters
+	local restedExperience = ExpBuddyDataDB[addon.mapID].Rested
+	local questExperience = ExpBuddyDataDB[addon.mapID].Quests
+	local nodeExperience = ExpBuddyDataDB[addon.mapID].Nodes
+	local explorationExperience = ExpBuddyDataDB[addon.mapID].Exploration
+
+	local sum = monsterExperience + restedExperience + questExperience + nodeExperience + explorationExperience
+	if sum == 0 then
+		return 0
+	end
+	return format("%.2f", (number/(sum)) * 100)
+end
+
 addon.FindNumber = function(str, nth)
     local numbers = {}
 	for number in str:gmatch("%d+") do
