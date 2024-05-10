@@ -34,6 +34,8 @@ local icons = {
 		["texture"] = 1032149,
 	},
 }
+local versionText
+local resetButton
 
 -- Refreshes the frame to update any values that may have changed
 -- or need to change.
@@ -192,6 +194,10 @@ addon.LoadFrame = function()
 	explorationExperience:SetPoint("RIGHT", -15, 0)
 	explorationExperience:SetJustifyH("RIGHT")
 	explorationExperience:SetText(format("|cffFFFFFF%s (%s%%)|r", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Exploration)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Exploration)))
+
+	versionText = frame:CreateFontString(nil, nil, "GameFontNormal")
+	versionText:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 15, 15)
+	versionText:SetText(C_AddOns.GetAddOnMetadata(addonName, "Version"))
 
 	frame:Show()
 end
