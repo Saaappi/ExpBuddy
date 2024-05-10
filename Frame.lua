@@ -204,22 +204,28 @@ addon.LoadFrame = function()
 	resetButton:RegisterForClicks("LeftButtonUp")
 	resetButton:SetText("Reset")
 
+	resetButton:SetScript("OnClick", function()
+		StaticPopupDialogs["EXPBUDDY_ACK_RESET"] = {
+			text = format("Are you sure you want to reset the data for %s?", ExpBuddyDataDB[addon.mapID].mapName),
+			button1 = YES,
+			button2 = CANCEL,
+			OnAccept = function(self, data)
+				ExpBuddyDataDB[addon.mapID].Monsters = 0
+				ExpBuddyDataDB[addon.mapID].Rested = 0
+				ExpBuddyDataDB[addon.mapID].Quests = 0
+				ExpBuddyDataDB[addon.mapID].Nodes = 0
+				ExpBuddyDataDB[addon.mapID].Exploration = 0
+				addon.RefreshFrame(addon.mapID)
+			end,
+			showAlert = true,
+			whileDead = false,
+			hideOnEscape = true,
+			enterClicksFirstButton = false,
+			preferredIndex = 3,
+		}
+		StaticPopup_Show("EXPBUDDY_ACK_RESET")
+	end)
 	resetButton:SetPoint("BOTTOMRIGHT", -15, 15)
-
-                    --[[basicButton:SetScript("OnClick", button.onClick)
-                    basicButton:SetScript("OnEnter", function()
-                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT")
-                        GameTooltip:SetText(button.tooltipHeader)
-                        GameTooltip:AddLine("|cffFFFFFF" .. button.tooltipText .. "|r", 1, 1, 1, true)
-                        GameTooltip:Show()
-                    end)
-                    basicButton:SetScript("OnLeave", function()
-                        GameTooltip:Hide()
-                    end)
-
-                    basicButton:SetPoint(button.anchor, button.parent, button.relativeAnchor, button.oX, button.oY)
-
-                    return basicButton]]
 
 	frame:Show()
 end
@@ -311,28 +317,7 @@ function ExpBuddy:SlashCommandHandler(cmd)
 				if (labels.Monsters+labels.Rested+labels.Quests+labels.Nodes+labels.Exploration) == 0 then
 					print(addonTable.data["COLORED_ADDON_NAME"] .. ": This zone doesn't have any data to reset.")
 				else
-					StaticPopupDialogs["EXPBUDDY_ACK_RESET"] = {
-						text = "Are you sure you want to reset the data for |cffFFD100" .. addonTable.currentMap .. "|r?",
-						button1 = YES,
-						button2 = CANCEL,
-						OnAccept = function(self, data)
-							-- Reset zone data to 0
-							ExpBuddyDataDB[addonTable.currentMap]["Monsters"] = 0
-							ExpBuddyDataDB[addonTable.currentMap]["Rested"] = 0
-							ExpBuddyDataDB[addonTable.currentMap]["Quests"] = 0
-							ExpBuddyDataDB[addonTable.currentMap]["Nodes"] = 0
-							ExpBuddyDataDB[addonTable.currentMap]["Exploration"] = 0
-							
-							-- Update labels
-							addonTable.ResetLabels()
-						end,
-						showAlert = true,
-						whileDead = false,
-						hideOnEscape = true,
-						enterClicksFirstButton = true,
-						preferredIndex = 3,
-					}
-					StaticPopup_Show("EXPBUDDY_ACK_RESET")
+					
 				end
 			end)
 			frame:AddChild(addonTable.resetButton)
