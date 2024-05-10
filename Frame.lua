@@ -118,7 +118,7 @@ addon.LoadFrame = function()
 			ExpBuddy.Print("The value must be a number.")
 		end
 	end)
-	entryLevelEditBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -75)
+	entryLevelEditBox:SetPoint("TOPLEFT", 15, -75)
 
 	-- Create the exit level edit box.
 	exitLevelEditBox = CreateFrame("EditBox", addonName .. "EntryLevelEditBox", frame, "InputBoxTemplate")
@@ -141,7 +141,7 @@ addon.LoadFrame = function()
 			ExpBuddy.Print("The value must be a number.")
 		end
 	end)
-	exitLevelEditBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -15, -75)
+	exitLevelEditBox:SetPoint("TOPRIGHT", -15, -75)
 
 	-- Create the different category icons and labels in the frame.
 	for index, icon in ipairs(icons) do
@@ -196,8 +196,30 @@ addon.LoadFrame = function()
 	explorationExperience:SetText(format("|cffFFFFFF%s (%s%%)|r", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Exploration)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Exploration)))
 
 	versionText = frame:CreateFontString(nil, nil, "GameFontNormal")
-	versionText:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 15, 15)
+	versionText:SetPoint("BOTTOMLEFT", 15, 15)
 	versionText:SetText(C_AddOns.GetAddOnMetadata(addonName, "Version"))
+
+	resetButton = CreateFrame("Button", addonName .. "ResetButton", "UIPanelButtonTemplate")
+	resetButton:SetSize(125, 25)
+	resetButton:RegisterForClicks("LeftButtonUp")
+	resetButton:SetText("Reset")
+
+	resetButton:SetPoint("BOTTOMRIGHT", -15, 15)
+
+                    --[[basicButton:SetScript("OnClick", button.onClick)
+                    basicButton:SetScript("OnEnter", function()
+                        GameTooltip:SetOwner(self, "ANCHOR_CURSOR_RIGHT")
+                        GameTooltip:SetText(button.tooltipHeader)
+                        GameTooltip:AddLine("|cffFFFFFF" .. button.tooltipText .. "|r", 1, 1, 1, true)
+                        GameTooltip:Show()
+                    end)
+                    basicButton:SetScript("OnLeave", function()
+                        GameTooltip:Hide()
+                    end)
+
+                    basicButton:SetPoint(button.anchor, button.parent, button.relativeAnchor, button.oX, button.oY)
+
+                    return basicButton]]
 
 	frame:Show()
 end
