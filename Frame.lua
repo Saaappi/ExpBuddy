@@ -26,7 +26,7 @@ addon.LoadFrame = function()
 		frame.TitleText:SetText(addonName)
 	end
 	if ExpBuddyPositionDB.SavedPosition then
-		frame:SetPoint(table.unpack(ExpBuddyPositionDB.SavedPosition))
+		frame:SetPoint(unpack(ExpBuddyPositionDB.SavedPosition))
 	else
 		frame:SetPoint("CENTER", UIParent, "CENTER")
 	end
@@ -43,7 +43,7 @@ addon.LoadFrame = function()
 		-- can open the frame at that position next time.
 		self:StopMovingOrSizing()
 		local point, _, relativePoint, xOfs, yOfs = self:GetPoint()
-		ExpBuddyPositionDB.SavedPosition = { point, UIParent, relativePoint, xOfs, yOfs }
+		ExpBuddyPositionDB.SavedPosition = { point, "UIParent", relativePoint, xOfs, yOfs }
 	end)
 
 	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
