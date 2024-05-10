@@ -4,10 +4,14 @@ local frame
 local frameBaseHeight = 350
 local frameBaseWidth = 215
 local currentMapName
+local entryLevelEditBox
+local exitLevelEditBox
 
-addon.UpdateFrameMapName = function(name)
+addon.RefreshFrame = function(mapID)
 	if frame and frame:IsVisible() then
-		currentMapName:SetText(addon.TruncateMapName(name))
+		currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[mapID].mapName))
+		entryLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].entryLevel or 0))
+		exitLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].exitLevel or 0))
 	end
 end
 
@@ -46,9 +50,57 @@ addon.LoadFrame = function()
 		ExpBuddyPositionDB.SavedPosition = { point, "UIParent", relativePoint, xOfs, yOfs }
 	end)
 
+	-- Create a font string for showing the current map name.
 	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
 	currentMapName:SetPoint("TOP", frame, "TOP", 0, -30)
 	currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[addon.mapID].mapName))
+
+	-- Create the entry and exit level editboxes.
+	entryLevelEditBox = CreateFrame("EditBox", addonName .. "EntryLevelEditBox", frame, "InputBoxTemplate")
+	entryLevelEditBox:SetAutoFocus(false)
+	entryLevelEditBox:SetSize(80, 10)
+	entryLevelEditBox:SetFontObject("ChatFontNormal")
+
+	entryLevelEditBox.title = entryLevelEditBox:CreateFontString(nil, nil, "GameTooltipText")
+	entryLevelEditBox.title:SetPoint("BOTTOMLEFT", entryLevelEditBox, "TOPLEFT", 0, 5)
+	entryLevelEditBox.title:SetText("Entry Level")
+
+	entryLevelEditBox:SetText(tostring(ExpBuddyDataDB[addon.mapID].entryLevel or 0))
+
+	entryLevelEditBox:SetScript("OnEnterPressed", function(self)
+		if tonumber(self:GetText(), 10) then
+			ExpBuddyDataDB[addon.mapID].entryLevel = tonumber(self:GetText(), 10)
+			self:SetText(ExpBuddyDataDB[addon.mapID].entryLevel)
+			self:ClearFocus()
+		else
+			ExpBuddy.Print("The value must be a number.")
+		end
+	end)
+
+	entryLevelEditBox:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -75)
+
+	exitLevelEditBox = CreateFrame("EditBox", addonName .. "EntryLevelEditBox", frame, "InputBoxTemplate")
+	exitLevelEditBox:SetAutoFocus(false)
+	exitLevelEditBox:SetSize(80, 10)
+	exitLevelEditBox:SetFontObject("ChatFontNormal")
+
+	exitLevelEditBox.title = entryLevelEditBox:CreateFontString(nil, nil, "GameTooltipText")
+	exitLevelEditBox.title:SetPoint("BOTTOMLEFT", exitLevelEditBox, "TOPLEFT", 0, 5)
+	exitLevelEditBox.title:SetText("Exit Level")
+
+	exitLevelEditBox:SetText(tostring(ExpBuddyDataDB[addon.mapID].exitLevel or 0))
+
+	exitLevelEditBox:SetScript("OnEnterPressed", function(self)
+		if tonumber(self:GetText(), 10) then
+			ExpBuddyDataDB[addon.mapID].exitLevel = tonumber(self:GetText(), 10)
+			self:SetText(ExpBuddyDataDB[addon.mapID].exitLevel)
+			self:ClearFocus()
+		else
+			ExpBuddy.Print("The value must be a number.")
+		end
+	end)
+
+	exitLevelEditBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -15, -75)
 
 	frame:Show()
 end

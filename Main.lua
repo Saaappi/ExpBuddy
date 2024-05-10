@@ -4,6 +4,8 @@ local eventHandler = CreateFrame("Frame")
 addon.CreateNewMap = function(mapID, mapName)
     ExpBuddyDataDB[mapID] = {}
     ExpBuddyDataDB[mapID].mapName = mapName
+    ExpBuddyDataDB[mapID].entryLevel = addon.playerLevel
+    ExpBuddyDataDB[mapID].exitLevel = 0
     ExpBuddyDataDB[mapID].Exploration = 0
     ExpBuddyDataDB[mapID].Monsters = 0
     ExpBuddyDataDB[mapID].Nodes = 0
@@ -58,7 +60,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                     if not ExpBuddyDataDB[addon.mapID] then
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
-                    addon.UpdateFrameMapName(mapInfo.name)
+                    addon.RefreshFrame(addon.mapID)
                 end
             else
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
@@ -88,7 +90,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                     if not ExpBuddyDataDB[addon.mapID] then
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
-                    addon.UpdateFrameMapName(mapInfo.name)
+                    addon.RefreshFrame(addon.mapID)
                 end
             else
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
