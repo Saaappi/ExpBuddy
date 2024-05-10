@@ -60,8 +60,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
             end
 
-            print(addon.Substring("abc"))
-            print(addon.Substring("Western Plaguelands"))
+            addon.LoadFrame()
 
             -- Get some information about the current character.
             addon.playerLevel = UnitLevel("player")

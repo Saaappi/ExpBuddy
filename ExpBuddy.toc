@@ -15,7 +15,6 @@ _Functions\Strings.lua
 
 # Frame Prerequisites
 Data\Constants.lua
-#Ace.lua
 
 # Data
 Data\Quests.lua
@@ -25,3 +24,5 @@ Data\Nodes.lua
 
 # General Stuff
 #ExpBuddy.lua
+
+Frame.lua

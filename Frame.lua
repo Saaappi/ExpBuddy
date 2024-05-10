@@ -1,6 +1,34 @@
-local addonName, addonTable = ...
-local AceGUI = LibStub("AceGUI-3.0")
+local addonName, addon = ...
 
+local frame
+local frameBaseHeight = 350
+local frameBaseWidth = 215
+local currentMapName
+
+addon.LoadFrame = function()
+	-- If the frame is already visible, then hide it.
+	if frame then
+		if frame:IsVisible() then
+			frame:Hide()
+			return
+		end
+	end
+
+	if not frame then
+		frame = CreateFrame("Frame", addonName .. "Frame", UIParent, "BasicFrameTemplateWithInset")
+		frame:SetSize(frameBaseWidth, frameBaseHeight)
+		frame.TitleText:SetText(addonName)
+	end
+	frame:SetPoint("CENTER", UIParent, "CENTER")
+
+	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
+	currentMapName:SetPoint("TOP", frame, "TOP", 0, -25)
+	currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[addon.mapID].mapName))
+
+	frame:Show()
+end
+--local AceGUI = LibStub("AceGUI-3.0")
+--[[
 -- AceGUI Widgets
 local frame = AceGUI:Create("Frame")
 addonTable.currentMapLabel = AceGUI:Create("Label")
@@ -158,4 +186,4 @@ function ExpBuddy:OnInitialize()
 	LibStub("AceConfig-3.0"):RegisterOptionsTable("ExpBuddy_Main", addonTable.mainOptions)
 	self.mainOptions = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ExpBuddy_Main", addonName); addonTable.mainOptions = self.mainOptions
 	self:RegisterChatCommand("xp", "SlashCommandHandler")
-end
+end]]
