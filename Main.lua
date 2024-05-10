@@ -64,8 +64,6 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
             end
 
-            addon.LoadFrame()
-
             -- Get some information about the current character.
             addon.playerLevel = UnitLevel("player")
 

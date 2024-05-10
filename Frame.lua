@@ -42,8 +42,8 @@ addon.LoadFrame = function()
 		-- Once the frame stops moving, get the position data so we
 		-- can open the frame at that position next time.
 		self:StopMovingOrSizing()
-		local point, relativeTo, relativePoint, xOfs, yOfs = self:GetPoint()
-		ExpBuddyPositionDB.SavedPosition = { point, relativeTo, relativePoint, xOfs, yOfs }
+		local point, _, relativePoint, xOfs, yOfs = self:GetPoint()
+		ExpBuddyPositionDB.SavedPosition = { point, UIParent, relativePoint, xOfs, yOfs }
 	end)
 
 	currentMapName = frame:CreateFontString(nil, nil, "GameFontNormal")
