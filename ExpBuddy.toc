@@ -25,6 +25,3 @@ Data\Nodes.lua
 
 # General Stuff
 #ExpBuddy.lua
-
-# Options
-#Options\Main.lua
