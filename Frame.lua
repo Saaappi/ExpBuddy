@@ -2,7 +2,7 @@ local addonName, addon = ...
 
 local frame
 local frameBaseHeight = 350
-local frameBaseWidth = 215
+local frameBaseWidth = 275
 
 local currentMapName
 local entryLevelEditBox
@@ -42,11 +42,11 @@ addon.RefreshFrame = function(mapID)
 		currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[mapID].mapName))
 		entryLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].entryLevel or 0))
 		exitLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].exitLevel or 0))
-		monsterExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Monsters)))
-		restedExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Rested)))
-		questExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Quests)))
-		nodeExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Nodes)))
-		explorationExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Exploration)))
+		monsterExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Monsters)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Monsters)))
+		restedExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Rested)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Rested)))
+		questExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Quests)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Quests)))
+		nodeExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Nodes)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Nodes)))
+		explorationExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Exploration)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Exploration)))
 	end
 end
 
@@ -164,25 +164,34 @@ addon.LoadFrame = function()
 
 	-- Add in the font strings for the various experience values.
 	monsterExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
-	monsterExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -20)
-	monsterExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 1, "RIGHT")
-	monsterExperience:SetText(tostring(addon.FormatNumber(1000000)))
+	monsterExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 1, "RIGHT", 80, 0)
+	monsterExperience:SetPoint("RIGHT", -15, 0)
+	monsterExperience:SetJustifyH("RIGHT")
+	monsterExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Monsters)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Monsters)))
 
 	restedExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
-	restedExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -35)
-	--restedExperience:SetText(tostring(addon.FormatNumber(10000000)))
+	restedExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 2, "RIGHT", 80, 0)
+	restedExperience:SetPoint("RIGHT", -15, 0)
+	restedExperience:SetJustifyH("RIGHT")
+	restedExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Rested)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Rested)))
 
 	questExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
-	questExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -50)
-	--questExperience:SetText(tostring(addon.FormatNumber(100000000)))
+	questExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 3, "RIGHT", 80, 0)
+	questExperience:SetPoint("RIGHT", -15, 0)
+	questExperience:SetJustifyH("RIGHT")
+	questExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Quests)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Quests)))
 
 	nodeExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
-	nodeExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -65)
-	--nodeExperience:SetText(tostring(addon.FormatNumber(1000000000)))
+	nodeExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 4, "RIGHT", 80, 0)
+	nodeExperience:SetPoint("RIGHT", -15, 0)
+	nodeExperience:SetJustifyH("RIGHT")
+	nodeExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Nodes)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Nodes)))
 
 	explorationExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
-	explorationExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -80)
-	--explorationExperience:SetText(tostring(addon.FormatNumber(10000000000)))
+	explorationExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 5, "RIGHT", 80, 0)
+	explorationExperience:SetPoint("RIGHT", -15, 0)
+	explorationExperience:SetJustifyH("RIGHT")
+	explorationExperience:SetText(format("%s (%s%)", tostring(addon.FormatNumber(ExpBuddyDataDB[addon.mapID].Exploration)), addon.CalculatePercent(ExpBuddyDataDB[addon.mapID].Exploration)))
 
 	frame:Show()
 end

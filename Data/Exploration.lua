@@ -19,7 +19,7 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
 			local experienceGained = tonumber(addon.FindNumber(msg, 1))
 			local newExperience = currentExperience + experienceGained
 			ExpBuddyDataDB[addon.mapID].Exploration = newExperience
-			--addonTable.explorationLabel:SetText("\n" .. CreateAtlasMarkup("GarrMission_MissionIcon-Exploration", 16, 16) .. " |cffFFD100" .. "Exploration|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Exploration"]) .. "%)\n\n")
+			addon.RefreshFrame(addon.mapID)
 		end
 	end
 end)

@@ -27,10 +27,8 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
 			-- to remove the false positive.
 			if ExpBuddyDataDB[addon.mapID].Nodes ~= 0 then
 				ExpBuddyDataDB[addon.mapID].Nodes = ExpBuddyDataDB[addon.mapID].Nodes - experienceGained
-				--addonTable.nodesLabel:SetText("\n" .. CreateAtlasMarkup("Mobile-TreasureIcon", 16, 16) .. " |cffFFD100" .. "Nodes|r: " .. addonTable.FormatNumber(tostring(ExpBuddyDataDB[addonTable.currentMap]["Nodes"])) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Nodes"]) .. "%)")
 			end
-
-			--addonTable.questsLabel:SetText("\n" .. CreateAtlasMarkup("NPE_TurnIn", 16, 16) .. " |cffFFD100" .. "Quests|r: " .. addonTable.FormatNumber(tostring(experience)) .. " (" .. addonTable.CalculatePercent(ExpBuddyDataDB[addonTable.currentMap]["Quests"]) .. "%)")
+			addon.RefreshFrame(addon.mapID)
 		end)
 	end
 end)
