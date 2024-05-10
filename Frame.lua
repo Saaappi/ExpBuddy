@@ -6,7 +6,11 @@ local frameBaseWidth = 215
 local currentMapName
 local entryLevelEditBox
 local exitLevelEditBox
-
+local monsterExperience
+local restedExperience
+local questExperience
+local nodeExperience
+local explorationExperience
 local icons = {
 	{
 		["name"] = "Monsters",
@@ -35,6 +39,7 @@ addon.RefreshFrame = function(mapID)
 		currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[mapID].mapName))
 		entryLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].entryLevel or 0))
 		exitLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].exitLevel or 0))
+		monsterExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Monsters)))
 	end
 end
 
@@ -137,9 +142,9 @@ addon.LoadFrame = function()
 		texture:SetSize(24, 24)
 		texture:SetTexture(icon.texture)
 
-		local fs = frame:CreateFontString(nil, nil, "GameFontNormal")
-		fs:SetPoint("LEFT", addonName .. "FrameIcon" .. index, "RIGHT", 5, 0)
-		fs:SetText(icon.name)
+		local labelName = frame:CreateFontString(nil, nil, "GameFontNormal")
+		labelName:SetPoint("LEFT", addonName .. "FrameIcon" .. index, "RIGHT", 5, 0)
+		labelName:SetText(icon.name)
 
 		-- Create the border texture to overlay the specialization icon
 		-- texture above.
@@ -148,6 +153,28 @@ addon.LoadFrame = function()
 		border:SetSize(29, 29)
 		border:SetAtlas("Forge-ColorSwatchBorder", false)
 	end
+
+	-- Add in the font strings for the various experience values.
+	monsterExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
+	monsterExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -20)
+	monsterExperience:SetPoint("LEFT", addonName .. "FrameIcon" .. 1, "RIGHT")
+	monsterExperience:SetText(tostring(addon.FormatNumber(1000000)))
+
+	restedExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
+	restedExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -35)
+	--restedExperience:SetText(tostring(addon.FormatNumber(10000000)))
+
+	questExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
+	questExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -50)
+	--questExperience:SetText(tostring(addon.FormatNumber(100000000)))
+
+	nodeExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
+	nodeExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -65)
+	--nodeExperience:SetText(tostring(addon.FormatNumber(1000000000)))
+
+	explorationExperience = frame:CreateFontString(nil, nil, "GameFontNormal")
+	explorationExperience:SetPoint("TOPRIGHT", exitLevelEditBox, "BOTTOMRIGHT", 0, -80)
+	--explorationExperience:SetText(tostring(addon.FormatNumber(10000000000)))
 
 	frame:Show()
 end
