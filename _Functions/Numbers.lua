@@ -1,11 +1,11 @@
 local addonName, addon = ...
 
 addon.FindNumber = function(str, nth)
-    local arr = {}
-	for i in string.gmatch(str, "%d+") do
-		table.insert(arr, i)
+    local numbers = {}
+	for number in str:gmatch("%d+") do
+		table.insert(numbers, tonumber(number))
 	end
-	return arr[nth]
+	return numbers[nth]
 end
 
 addon.FormatNumber = function(number)
