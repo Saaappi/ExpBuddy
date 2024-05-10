@@ -56,6 +56,8 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
                 end
+            else
+                ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
             end
 
             -- Get some information about the current character.
@@ -83,6 +85,8 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
                 end
+            else
+                ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
             end
         end)
     end
