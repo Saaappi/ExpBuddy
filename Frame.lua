@@ -5,7 +5,7 @@ local frameBaseHeight = 350
 local frameBaseWidth = 215
 local currentMapName
 
-addon.UpdateMapName = function(name)
+addon.UpdateFrameMapName = function(name)
 	if frame and frame:IsVisible() then
 		currentMapName:SetText(addon.TruncateMapName(name))
 	end
