@@ -11,14 +11,6 @@ addonTable.GetData = function()
 	return tbl
 end
 
-addonTable.Substring = function(str)
-	if string.len(str) <= 15 then
-		return str
-	else
-		return string.sub(str, 1, 15) .. "..."
-	end
-end
-
 addonTable.CalculatePercent = function(cat)
 	local monsters = ExpBuddyDataDB[addonTable.currentMap]["Monsters"]
 	local rested = ExpBuddyDataDB[addonTable.currentMap]["Rested"]

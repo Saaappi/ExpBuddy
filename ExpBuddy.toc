@@ -11,6 +11,7 @@ Main.lua
 # Functions
 _Functions\Print.lua
 _Functions\Numbers.lua
+_Functions\Strings.lua
 
 # Frame Prerequisites
 Data\Constants.lua
