@@ -40,6 +40,10 @@ addon.RefreshFrame = function(mapID)
 		entryLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].entryLevel or 0))
 		exitLevelEditBox:SetText(tostring(ExpBuddyDataDB[mapID].exitLevel or 0))
 		monsterExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Monsters)))
+		restedExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Rested)))
+		questExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Quests)))
+		nodeExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Nodes)))
+		explorationExperience:SetText(tostring(addon.FormatNumber(ExpBuddyDataDB[mapID].Exploration)))
 	end
 end
 
