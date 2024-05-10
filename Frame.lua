@@ -3,6 +3,7 @@ local addonName, addon = ...
 local frame
 local frameBaseHeight = 350
 local frameBaseWidth = 215
+
 local currentMapName
 local entryLevelEditBox
 local exitLevelEditBox
