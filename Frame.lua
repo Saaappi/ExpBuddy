@@ -7,6 +7,29 @@ local currentMapName
 local entryLevelEditBox
 local exitLevelEditBox
 
+local icons = {
+	{
+		["name"] = "Monsters",
+		["texture"] = 237272,
+	},
+	{
+		["name"] = "Rested",
+		["texture"] = 134414,
+	},
+	{
+		["name"] = "Quests",
+		["texture"] = 236669,
+	},
+	{
+		["name"] = "Nodes",
+		["texture"] = 133939,
+	},
+	{
+		["name"] = "Exploration",
+		["texture"] = 1032149,
+	},
+}
+
 addon.RefreshFrame = function(mapID)
 	if frame and frame:IsVisible() then
 		currentMapName:SetText(addon.TruncateMapName(ExpBuddyDataDB[mapID].mapName))
@@ -101,6 +124,30 @@ addon.LoadFrame = function()
 	end)
 
 	exitLevelEditBox:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -15, -75)
+
+	for index, icon in ipairs(icons) do
+		-- Create the specialization icon texture to indicate which spec
+		-- the corresponding edit box (the one to its right) is for.
+		local texture = frame:CreateTexture(addonName .. "FrameIcon" .. index, "BORDER")
+		if index == 1 then
+			texture:SetPoint("TOPLEFT", entryLevelEditBox, "BOTTOMLEFT", 0, -20)
+		else
+			texture:SetPoint("TOPLEFT", addonName .. "FrameIcon" .. (index - 1), "BOTTOMLEFT", 0, -15)
+		end
+		texture:SetSize(24, 24)
+		texture:SetTexture(icon.texture)
+
+		local fs = frame:CreateFontString(nil, nil, "GameFontNormal")
+		fs:SetPoint("LEFT", addonName .. "FrameIcon" .. index, "RIGHT", 5, 0)
+		fs:SetText(icon.name)
+
+		-- Create the border texture to overlay the specialization icon
+		-- texture above.
+		local border = frame:CreateTexture(nil, "ARTWORK")
+		border:SetPoint("CENTER", texture, "CENTER", 0, 0)
+		border:SetSize(29, 29)
+		border:SetAtlas("Forge-ColorSwatchBorder", false)
+	end
 
 	frame:Show()
 end
