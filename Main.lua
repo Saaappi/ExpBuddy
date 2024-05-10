@@ -12,6 +12,7 @@ addon.CreateNewMap = function(mapID, mapName)
 end
 
 eventHandler:RegisterEvent("ADDON_LOADED")
+eventHandler:RegisterEvent("PLAYER_LEVEL_CHANGED")
 eventHandler:RegisterEvent("PLAYER_LOGIN")
 eventHandler:RegisterEvent("ZONE_CHANGED")
 eventHandler:RegisterEvent("ZONE_CHANGED_NEW_AREA")
@@ -32,6 +33,16 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
             eventHandler:UnregisterEvent("ADDON_LOADED")
         end
     end
+    if event == "PLAYER_LEVEL_CHANGED" then
+        local _, newLevel = ...
+        if newLevel then
+            addon.playerLevel = newLevel
+        end
+        if newLevel == GetMaxLevelForPlayerExpansion() then
+            -- The player is max level, so unregister the event.
+            eventHandler:UnregisterEvent("PLAYER_LEVEL_CHANGED")
+        end
+    end
     if event == "PLAYER_LOGIN" then
         C_Timer.After(0.5, function()
             local mapID = C_Map.GetBestMapForUnit("player")
@@ -47,8 +58,16 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                 end
             end
 
+            -- Get some information about the current character.
+            addon.playerLevel = UnitLevel("player")
+
             -- Unregister the event for performance.
             eventHandler:UnregisterEvent("PLAYER_LOGIN")
+
+            if addon.playerLevel == GetMaxLevelForPlayerExpansion() then
+                -- The player is max level, so unregister the event.
+                eventHandler:UnregisterEvent("PLAYER_LEVEL_CHANGED")
+            end
         end)
     end
     if event == "ZONE_CHANGED" or event == "ZONE_CHANGED_NEW_AREA" then

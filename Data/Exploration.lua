@@ -1,5 +1,5 @@
-local addonName, addonTable = ...
-local e = CreateFrame("Frame")
+local addonName, addon = ...
+local eventHandler = CreateFrame("Frame")
 
 local function FindNumber(str, nth)
 	local arr = {}
@@ -9,8 +9,8 @@ local function FindNumber(str, nth)
 	return arr[nth]
 end
 
-e:RegisterEvent("CHAT_MSG_SYSTEM")
-e:SetScript("OnEvent", function(self, event, ...)
+eventHandler:RegisterEvent("CHAT_MSG_SYSTEM")
+eventHandler:SetScript("OnEvent", function(self, event, ...)
 	if event == "CHAT_MSG_SYSTEM" then
 		if addonTable.playerLevel == addonTable.data["MAX_LEVEL"] then return end
 		
