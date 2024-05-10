@@ -65,6 +65,12 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
                     addon.RefreshFrame(addon.mapID)
+                elseif mapInfo.mapType == 6 then
+                    addon.mapID = mapInfo.parentMapID
+                    if not ExpBuddyDataDB[addon.mapID] then
+                        addon.CreateNewMap(addon.mapID, mapInfo.name)
+                    end
+                    addon.RefreshFrame(addon.mapID)
                 end
             else
                 ExpBuddy.Print("The current map could not be added. Please leave the zone and return or try a reload.")
@@ -97,6 +103,12 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                 local mapInfo = C_Map.GetMapInfo(mapID)
                 if mapInfo.mapType == 3 then -- It's a zone!
                     addon.mapID = mapID
+                    if not ExpBuddyDataDB[addon.mapID] then
+                        addon.CreateNewMap(addon.mapID, mapInfo.name)
+                    end
+                    addon.RefreshFrame(addon.mapID)
+                elseif mapInfo.mapType == 6 then
+                    addon.mapID = mapInfo.parentMapID
                     if not ExpBuddyDataDB[addon.mapID] then
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
