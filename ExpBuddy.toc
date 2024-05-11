@@ -1,7 +1,7 @@
 ## Author: LightskyGG
 ## Interface: 100207
 ## Title: ExpBuddy
-## Version: 3.0.1
+## Version: 3.1.0
 ## IconTexture: 894556
 ## SavedVariables: ExpBuddyQuestDB, ExpBuddyPositionDB
 ## SavedVariablesPerCharacter: ExpBuddyDataDB

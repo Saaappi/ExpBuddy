@@ -8,3 +8,7 @@ addon.TruncateMapName = function(str)
 	end
     return str:sub(1, 15) .. "..."
 end
+
+addon.StringContains = function(str1, str2)
+    return string.find(str1:lower(), str2:lower(), 1, true) ~= nil
+end
