@@ -65,10 +65,11 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
                     addon.RefreshFrame(addon.mapID)
-                elseif mapInfo.mapType == 6 then
+                elseif mapInfo.mapType == 5 or mapInfo.mapType == 6 then
                     addon.mapID = mapInfo.parentMapID
+                    local name = C_Map.GetMapInfo(addon.mapID).name
                     if not ExpBuddyDataDB[addon.mapID] then
-                        addon.CreateNewMap(addon.mapID, mapInfo.name)
+                        addon.CreateNewMap(addon.mapID, name)
                     end
                     addon.RefreshFrame(addon.mapID)
                 end
@@ -107,10 +108,11 @@ eventHandler:SetScript("OnEvent", function(self, event, ...)
                         addon.CreateNewMap(addon.mapID, mapInfo.name)
                     end
                     addon.RefreshFrame(addon.mapID)
-                elseif mapInfo.mapType == 6 then
+                elseif mapInfo.mapType == 5 or mapInfo.mapType == 6 then
                     addon.mapID = mapInfo.parentMapID
+                    local name = C_Map.GetMapInfo(addon.mapID).name
                     if not ExpBuddyDataDB[addon.mapID] then
-                        addon.CreateNewMap(addon.mapID, mapInfo.name)
+                        addon.CreateNewMap(addon.mapID, name)
                     end
                     addon.RefreshFrame(addon.mapID)
                 end
